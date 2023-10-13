@@ -1,0 +1,249 @@
+[gd_scene load_steps=27 format=3 uid="uid://db6dkllte6bf5"]
+
+[ext_resource type="Script" path="res://Scripts/Levels/test_001.gd" id="1_c07j4"]
+[ext_resource type="PackedScene" uid="uid://dsdg7jp6jutb0" path="res://Assets/Door.tscn" id="1_y7qts"]
+[ext_resource type="PackedScene" uid="uid://dqnud7cptevde" path="res://Assets/Button.tscn" id="2_pinnm"]
+[ext_resource type="PackedScene" uid="uid://cdjlqsebg18d3" path="res://Locks/kickable_hole.tscn" id="3_c2uvc"]
+[ext_resource type="PackedScene" uid="uid://bk4ncqvufoum" path="res://Assets/Window.glb" id="3_ghvx5"]
+[ext_resource type="PackedScene" uid="uid://b6t105hqhi2q2" path="res://Locks/pickable_hole.tscn" id="4_gjkgu"]
+[ext_resource type="PackedScene" uid="uid://c5fiusv0uf2od" path="res://Assets/'Kickable.tscn" id="5_bo3w3"]
+[ext_resource type="PackedScene" uid="uid://sbwjcysciyu3" path="res://Assets/Pickable.tscn" id="6_jeac4"]
+[ext_resource type="PackedScene" uid="uid://cyemi5ptucujf" path="res://Entites/player.tscn" id="7_bnl6g"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ocq61"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_he785"]
+sky_material = SubResource("ProceduralSkyMaterial_ocq61")
+
+[sub_resource type="Environment" id="Environment_8ffhj"]
+background_mode = 2
+sky = SubResource("Sky_he785")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_52fi2"]
+size = Vector2(10, 4)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_aaiy4"]
+data = PackedVector3Array(5, 0, 2, -5, 0, 2, 5, 0, -2, -5, 0, 2, -5, 0, -2, 5, 0, -2)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_rvop8"]
+size = Vector2(10, 2)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_vgwk8"]
+data = PackedVector3Array(5, 0, 1, -5, 0, 1, 5, 0, -1, -5, 0, 1, -5, 0, -1, 5, 0, -1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_xb22o"]
+size = Vector2(1, 2)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_nx8c4"]
+data = PackedVector3Array(0.5, 0, 1, -0.5, 0, 1, 0.5, 0, -1, -0.5, 0, 1, -0.5, 0, -1, 0.5, 0, -1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_cstvt"]
+size = Vector2(10, 2.8)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_v0lis"]
+data = PackedVector3Array(5, 0, 1.4, -5, 0, 1.4, 5, 0, -1.4, -5, 0, 1.4, -5, 0, -1.4, 5, 0, -1.4)
+
+[sub_resource type="BoxMesh" id="BoxMesh_sidn3"]
+size = Vector3(10, 2.8, 0.3)
+
+[sub_resource type="BoxMesh" id="BoxMesh_6b5v6"]
+size = Vector3(1, 2.8, 7)
+
+[sub_resource type="Animation" id="Animation_i7ybv"]
+resource_name = "platformUp"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../GND/Platforn:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(1.5708, 3.48787e-16, 3.48787e-16), Vector3(-0.412037, 3.80644e-16, 1.96348e-16)]
+}
+
+[sub_resource type="Animation" id="Animation_htdcv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../GND/Platforn:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.5708, 3.48787e-16, 3.48787e-16)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../GND/pit:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.39, -4.769, 2.907)]
+}
+
+[sub_resource type="Animation" id="Animation_uqiyh"]
+resource_name = "Pit"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../GND/pit:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.39, -4.7688, 2.907), Vector3(0.39, 2.08165e-12, 2.907)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xrn5f"]
+_data = {
+"Pit": SubResource("Animation_uqiyh"),
+"RESET": SubResource("Animation_htdcv"),
+"platformUp": SubResource("Animation_i7ybv")
+}
+
+[node name="Test001" type="Node3D"]
+script = ExtResource("1_c07j4")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_8ffhj")
+
+[node name="GND" type="Node3D" parent="."]
+
+[node name="right" type="MeshInstance3D" parent="GND"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.460412)
+mesh = SubResource("PlaneMesh_52fi2")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="GND/right"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GND/right/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_aaiy4")
+
+[node name="left" type="MeshInstance3D" parent="GND"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.08165e-12, 5.469)
+mesh = SubResource("PlaneMesh_rvop8")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="GND/left"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GND/left/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_vgwk8")
+
+[node name="Platforn" type="Node3D" parent="GND"]
+transform = Transform3D(1, 0, -1.5246e-23, -1.5246e-23, -4.37114e-08, -1, 0, 1, -4.37114e-08, 3.09599, -0.100262, 1.5405)
+
+[node name="platform" type="MeshInstance3D" parent="GND/Platforn"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.939272)
+mesh = SubResource("PlaneMesh_xb22o")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="GND/Platforn/platform"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GND/Platforn/platform/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_nx8c4")
+
+[node name="pit" type="MeshInstance3D" parent="GND"]
+transform = Transform3D(0.932, 0, 0, 0, 0.932, 0, 0, 0, 0.932, 0.39, -4.769, 2.907)
+mesh = SubResource("PlaneMesh_cstvt")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="GND/pit"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GND/pit/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_v0lis")
+
+[node name="Walls" type="Node3D" parent="."]
+
+[node name="wall" type="MeshInstance3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.38493, -2.62173)
+mesh = SubResource("BoxMesh_sidn3")
+
+[node name="wall2" type="MeshInstance3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.40184, 6.56628)
+mesh = SubResource("BoxMesh_sidn3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.51375, 1.4087, 4.67895)
+mesh = SubResource("BoxMesh_6b5v6")
+
+[node name="8" type="MeshInstance3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.52698, 1.39498, -4.5633)
+mesh = SubResource("BoxMesh_6b5v6")
+
+[node name="9" type="MeshInstance3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.23102, 1.4087, 4.52565)
+mesh = SubResource("BoxMesh_6b5v6")
+
+[node name="10" type="MeshInstance3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.20333, 1.39498, -4.5152)
+mesh = SubResource("BoxMesh_6b5v6")
+
+[node name="Doors" type="Node3D" parent="."]
+
+[node name="DoorIn" parent="Doors" instance=ExtResource("1_y7qts")]
+transform = Transform3D(-0.00870905, 0, 0.999962, 0, 1, 0, -0.999962, 0, -0.00870905, -4.79005, 1.22235, 0)
+
+[node name="DoorOut" parent="Doors" instance=ExtResource("1_y7qts")]
+transform = Transform3D(-0.0105765, 0, 0.999944, 0, 1, 0, -0.999944, 0, -0.0105765, 5.04375, 1.22235, 0)
+
+[node name="Objects" type="Node3D" parent="."]
+
+[node name="window" parent="Objects" instance=ExtResource("3_ghvx5")]
+transform = Transform3D(-4.37114e-08, 3.48787e-16, 1, 3.48787e-16, 1, -3.48787e-16, -1, 3.48787e-16, -4.37114e-08, -1, 1.648, -2.372)
+
+[node name="window5" parent="Objects" instance=ExtResource("3_ghvx5")]
+transform = Transform3D(-4.37114e-08, 3.48787e-16, 1, 3.48787e-16, 1, -3.48787e-16, -1, 3.48787e-16, -4.37114e-08, -2, 1.648, -2.372)
+
+[node name="window2" parent="Objects" instance=ExtResource("3_ghvx5")]
+transform = Transform3D(-4.37114e-08, 3.48787e-16, 1, 3.48787e-16, 1, -3.48787e-16, -1, 3.48787e-16, -4.37114e-08, 2.08165e-12, 1.648, -2.372)
+
+[node name="window3" parent="Objects" instance=ExtResource("3_ghvx5")]
+transform = Transform3D(-4.37114e-08, 3.48787e-16, 1, 3.48787e-16, 1, -3.48787e-16, -1, 3.48787e-16, -4.37114e-08, 1, 1.648, -2.372)
+
+[node name="window4" parent="Objects" instance=ExtResource("3_ghvx5")]
+transform = Transform3D(-4.37114e-08, 3.48787e-16, 1, 3.48787e-16, 1, -3.48787e-16, -1, 3.48787e-16, -4.37114e-08, 2, 1.648, -2.372)
+
+[node name="Button" parent="Objects" instance=ExtResource("2_pinnm")]
+transform = Transform3D(-4.37114e-08, 3.48787e-16, 1, 3.48787e-16, 1, -3.48787e-16, -1, 3.48787e-16, -4.37114e-08, -3.2501, 0.599284, -1.77863)
+
+[node name="KickableHole" parent="Objects" instance=ExtResource("3_c2uvc")]
+transform = Transform3D(-4.37114e-08, 3.48787e-16, 1, 3.48787e-16, 1, -3.48787e-16, -1, 3.48787e-16, -4.37114e-08, 3.03415, 0.288198, 5.82799)
+
+[node name="pickableHole" parent="Objects" node_paths=PackedStringArray("player") instance=ExtResource("4_gjkgu")]
+transform = Transform3D(-4.37114e-08, 3.48787e-16, 1, 3.48787e-16, 1, -3.48787e-16, -1, 3.48787e-16, -4.37114e-08, 3.57704, 1.79241, -2.3332)
+player = NodePath("../../Player")
+
+[node name="Kickable" parent="Objects" instance=ExtResource("5_bo3w3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.431844, 0.256129, 0.783427)
+
+[node name="Pickable" parent="Objects" instance=ExtResource("6_jeac4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.302947, 1.21336, 4.98951)
+
+[node name="Animations" type="Node3D" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Animations"]
+libraries = {
+"": SubResource("AnimationLibrary_xrn5f")
+}
+
+[node name="Player" parent="." instance=ExtResource("7_bnl6g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.48044, 1.19249, -0.331344)
+
+[connection signal="button_pressed" from="Objects/Button" to="." method="_on_button_button_pressed"]
+[connection signal="kickable_in" from="Objects/KickableHole" to="." method="_on_kickable_hole_kickable_in"]
+[connection signal="pickable_in" from="Objects/pickableHole" to="." method="_on_pickable_hole_pickable_in"]

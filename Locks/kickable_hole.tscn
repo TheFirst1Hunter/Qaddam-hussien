@@ -1,0 +1,45 @@
+[gd_scene load_steps=4 format=3 uid="uid://cdjlqsebg18d3"]
+
+[ext_resource type="PackedScene" uid="uid://dtwwbhbtnossx" path="res://Assets/'Kickable Platform.glb" id="1_u53nm"]
+
+[sub_resource type="GDScript" id="GDScript_ns01e"]
+script/source = "extends Node3D
+
+signal kickable_in
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+
+
+func _on_area_3d_body_entered(body):
+	if body.is_in_group(\"kickable\"):
+		var tween = get_tree().create_tween()
+		tween.tween_property(body,\"global_transform\",$Center.global_transform,0.5)
+		body.freeze = true
+		emit_signal(\"kickable_in\")
+"
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_0f1fy"]
+radius = 0.7
+
+[node name="KickableHole" type="Node3D"]
+script = SubResource("GDScript_ns01e")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.171037, 0, 0)
+shape = SubResource("SphereShape3D_0f1fy")
+
+[node name="\'Kickable Platform" parent="." instance=ExtResource("1_u53nm")]
+
+[node name="Center" type="Node3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, 3.48787e-16, 1, -4.37114e-08, -3.48787e-16, 3.48787e-16, 3.48787e-16, 1, 0, 0.0884465, 0)
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

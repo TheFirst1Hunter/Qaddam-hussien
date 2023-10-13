@@ -1,0 +1,65 @@
+[gd_scene load_steps=14 format=3 uid="uid://dga0y6txo6q62"]
+
+[ext_resource type="PackedScene" uid="uid://cyemi5ptucujf" path="res://Entites/player.tscn" id="1_81776"]
+[ext_resource type="Texture2D" uid="uid://1ptko1nudang" path="res://Assets/Rustig Koppie Puresky 4K.exr" id="1_ibmei"]
+[ext_resource type="PackedScene" uid="uid://cdjlqsebg18d3" path="res://Locks/kickable_hole.tscn" id="2_6kybl"]
+[ext_resource type="PackedScene" uid="uid://by8p77gmthuie" path="res://Locks/joker_hole.tscn" id="3_6nl8g"]
+[ext_resource type="PackedScene" uid="uid://b6t105hqhi2q2" path="res://Locks/pickable_hole.tscn" id="3_xkhdr"]
+[ext_resource type="PackedScene" uid="uid://sbwjcysciyu3" path="res://Assets/Pickable.tscn" id="5_au1j8"]
+[ext_resource type="PackedScene" uid="uid://b8roygjr5dq25" path="res://Assets/'Kickable.glb" id="6_3k0n8"]
+[ext_resource type="PackedScene" uid="uid://c5fiusv0uf2od" path="res://Assets/'Kickable.tscn" id="7_i0ju4"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ednkv"]
+size = Vector3(0.5, 0.5, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6tjmi"]
+size = Vector3(0.5, 0.5, 0.5)
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_giswr"]
+panorama = ExtResource("1_ibmei")
+
+[sub_resource type="Sky" id="Sky_wmetv"]
+sky_material = SubResource("PanoramaSkyMaterial_giswr")
+
+[sub_resource type="Environment" id="Environment_lmlbd"]
+background_mode = 2
+sky = SubResource("Sky_wmetv")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="Tsest" type="Node3D"]
+
+[node name="StaticBody3D" type="RigidBody3D" parent="." groups=["pickable"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.224, 0.612488)
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="StaticBody3D" groups=["pickable"]]
+mesh = SubResource("BoxMesh_ednkv")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_6tjmi")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_lmlbd")
+
+[node name="Player" parent="." instance=ExtResource("1_81776")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0509, 1.02049, 0)
+
+[node name="KickableHole" parent="." instance=ExtResource("2_6kybl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.0948, 0.270716, 0)
+
+[node name="JokerGround" parent="." instance=ExtResource("3_6nl8g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.72378, -2.41655, 0)
+
+[node name="pickableHole" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_xkhdr")]
+transform = Transform3D(0.999173, 0, 0.0406549, 0, 1, 0, -0.0406549, 0, 0.999173, 7.20341, 1.19836, 0)
+player = NodePath("../Player")
+
+[node name="Pickable" parent="." instance=ExtResource("5_au1j8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.96352, 1.60419, 0)
+
+[node name="\'Kickable" parent="." instance=ExtResource("6_3k0n8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.39049, 0, 3.77564)
+
+[node name="Kickable" parent="." instance=ExtResource("7_i0ju4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.40236, 0.417446, 0)
