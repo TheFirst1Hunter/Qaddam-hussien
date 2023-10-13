@@ -6,8 +6,10 @@
 [ext_resource type="Script" path="res://Scripts/ButtonInteraction.gd" id="4_2n82o"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_yynbc"]
+height = 1.7
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_t5qv2"]
+height = 1.7
 
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_7eatl")
@@ -19,7 +21,7 @@ shape = SubResource("CapsuleShape3D_yynbc")
 mesh = SubResource("CapsuleMesh_t5qv2")
 
 [node name="Head" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.595642, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.448797, 0)
 
 [node name="Camera3D" type="Camera3D" parent="Head"]
 
@@ -37,7 +39,7 @@ script = ExtResource("2_m6pe6")
 [node name="Legs" type="Node3D" parent="."]
 
 [node name="RayCasts" type="Node3D" parent="Legs"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.43259, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.235638, 0)
 
 [node name="RayCast3D" type="RayCast3D" parent="Legs/RayCasts"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.217515, -0.558549)

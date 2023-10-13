@@ -1,0 +1,61 @@
+[gd_scene load_steps=9 format=3 uid="uid://blsaimml2bmwx"]
+
+[ext_resource type="PackedScene" uid="uid://cw2v3gaduyfxd" path="res://Levels/level_001.tscn" id="1_kr87p"]
+[ext_resource type="PackedScene" uid="uid://c0xt0igq4juul" path="res://Levels/level_002.tscn" id="2_85glf"]
+[ext_resource type="PackedScene" uid="uid://bw6hymrtef7t6" path="res://Levels/level_003.tscn" id="3_cfkxd"]
+[ext_resource type="PackedScene" uid="uid://db6dkllte6bf5" path="res://Levels/test_001.tscn" id="4_ik15b"]
+[ext_resource type="PackedScene" uid="uid://cyemi5ptucujf" path="res://Entites/player.tscn" id="5_1sbcs"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_cisi8"]
+size = Vector2(15, 50)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_6x1s4"]
+data = PackedVector3Array(7.5, 0, 25, -7.5, 0, 25, 7.5, 0, -25, -7.5, 0, 25, -7.5, 0, -25, 7.5, 0, -25)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_kl4y0"]
+size = Vector2(8, 8)
+
+[node name="Level01" type="Node3D"]
+
+[node name="Levels" type="Node3D" parent="."]
+
+[node name="Level001" parent="Levels" instance=ExtResource("1_kr87p")]
+
+[node name="Level002" parent="Levels" instance=ExtResource("2_85glf")]
+transform = Transform3D(-0.0520397, 0, -0.998645, 0, 1, 0, 0.998645, 0, -0.0520397, 6.32536, 0, 9.87487)
+
+[node name="pickableHole" parent="Levels/Level002/Objects" index="2" node_paths=PackedStringArray("player")]
+player = NodePath("../../../../Player")
+
+[node name="Level003" parent="Levels" node_paths=PackedStringArray("player") instance=ExtResource("3_cfkxd")]
+transform = Transform3D(0.99987, 0, -0.0161262, 0, 1, 0, 0.0161262, 0, 0.99987, 0.966691, 0, 18.4243)
+player = NodePath("../../Player")
+
+[node name="Test001" parent="Levels" instance=ExtResource("4_ik15b")]
+transform = Transform3D(0.0175222, 0, 0.999846, 0, 1, 0, -0.999846, 0, 0.0175222, -19.7847, 0, 33.7294)
+
+[node name="pickableHole" parent="Levels/Test001/Objects" index="7" node_paths=PackedStringArray("player")]
+player = NodePath("../../../../Player")
+
+[node name="Meshes" type="Node3D" parent="."]
+
+[node name="GND" type="MeshInstance3D" parent="Meshes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.98264, 0, 7.99995)
+mesh = SubResource("PlaneMesh_cisi8")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Meshes/GND"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Meshes/GND/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_6x1s4")
+disabled = true
+
+[node name="GND2" type="MeshInstance3D" parent="Meshes/GND"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.5216, 0, 16.7596)
+mesh = SubResource("PlaneMesh_kl4y0")
+
+[node name="Player" parent="." instance=ExtResource("5_1sbcs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.2344, 2.03593, 35.3525)
+kick_power = 500
+
+[editable path="Levels/Level002"]
+[editable path="Levels/Test001"]

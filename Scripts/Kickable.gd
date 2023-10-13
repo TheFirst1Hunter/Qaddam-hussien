@@ -2,11 +2,6 @@ extends Node3D
 
 @onready var ray_casts:Array = $"../Legs/RayCasts".get_children() 
 
-
-func _ready():
-	pass # Replace with function body.
-
-
 func _process(delta):
 	pass
 
@@ -27,7 +22,7 @@ func _input(event):
 			print(pushDirection)
 #			pushDirection = pushDirection.normalized()        
 			if collider.is_in_group("kickable"):
-				collider.apply_central_force(pushDirection * 500)
+				collider.apply_central_force(pushDirection * get_parent().kick_power)
 #				collider.apply_impulse(-collider.get_normal() * 0.1, collider.get_position())
 				
 				return
