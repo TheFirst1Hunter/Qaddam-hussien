@@ -1,6 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://sbwjcysciyu3"]
+[gd_scene load_steps=6 format=3 uid="uid://sbwjcysciyu3"]
+
+[ext_resource type="Texture2D" uid="uid://rej1y7a7ag7t" path="res://Assets/Textures/PickableTexture.png" id="1_sq5qs"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y7iur"]
+albedo_texture = ExtResource("1_sq5qs")
+uv1_triplanar_sharpness = 150.0
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_gtixl"]
 _surfaces = [{

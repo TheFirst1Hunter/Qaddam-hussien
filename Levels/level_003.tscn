@@ -1,8 +1,10 @@
-[gd_scene load_steps=20 format=3 uid="uid://bw6hymrtef7t6"]
+[gd_scene load_steps=22 format=3 uid="uid://bw6hymrtef7t6"]
 
 [ext_resource type="PackedScene" uid="uid://cdjlqsebg18d3" path="res://Locks/kickable_hole.tscn" id="1_hlaki"]
 [ext_resource type="Script" path="res://Scripts/Levels/level_003.gd" id="1_n1qyo"]
+[ext_resource type="Material" uid="uid://bjmh0hksgeqm5" path="res://Assets/Materials/GND.tres" id="2_3ikwi"]
 [ext_resource type="PackedScene" uid="uid://c5fiusv0uf2od" path="res://Assets/'Kickable.tscn" id="2_ysnkx"]
+[ext_resource type="Material" uid="uid://citfwthsykrmg" path="res://Assets/Materials/Wall.tres" id="3_ivs2h"]
 [ext_resource type="PackedScene" uid="uid://dsdg7jp6jutb0" path="res://Assets/Door.tscn" id="4_bsnkh"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_guleh"]
@@ -60,51 +62,61 @@ script = ExtResource("1_n1qyo")
 [node name="Meshes" type="Node3D" parent="Walls"]
 
 [node name="GND" type="MeshInstance3D" parent="Walls/Meshes"]
+material_override = ExtResource("2_3ikwi")
 mesh = SubResource("PlaneMesh_guleh")
 skeleton = NodePath("../..")
 
 [node name="Roof" type="MeshInstance3D" parent="Walls/Meshes"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.8, 0)
+material_override = ExtResource("2_3ikwi")
 mesh = SubResource("PlaneMesh_2scby")
 skeleton = NodePath("../..")
 
 [node name="Right1" type="MeshInstance3D" parent="Walls/Meshes"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.97461, 1.4094, 2.12405)
+material_override = ExtResource("3_ivs2h")
 mesh = SubResource("BoxMesh_lh7b0")
 skeleton = NodePath("../..")
 
 [node name="left" type="MeshInstance3D" parent="Walls/Meshes"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.95217, 1.4094, -2.88712)
+material_override = ExtResource("3_ivs2h")
 mesh = SubResource("BoxMesh_lh7b0")
 skeleton = NodePath("../..")
 
 [node name="in" type="MeshInstance3D" parent="Walls/Meshes"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.022015, 1.4094, -2.90542)
+material_override = ExtResource("3_ivs2h")
 mesh = SubResource("BoxMesh_lh7b0")
 skeleton = NodePath("../..")
 
 [node name="out" type="MeshInstance3D" parent="Walls/Meshes"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.64733, 1.4094, 2.12423)
+material_override = ExtResource("3_ivs2h")
 mesh = SubResource("BoxMesh_lh7b0")
 skeleton = NodePath("../..")
 
 [node name="out2" type="MeshInstance3D" parent="Walls/Meshes"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6.91163, 1.4094, 2.12423)
+material_override = ExtResource("3_ivs2h")
 mesh = SubResource("BoxMesh_djoij")
 skeleton = NodePath("../..")
 
 [node name="out3" type="MeshInstance3D" parent="Walls/Meshes"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6.91163, 1.4094, -1.2694)
+material_override = ExtResource("3_ivs2h")
 mesh = SubResource("BoxMesh_djoij")
 skeleton = NodePath("../..")
 
 [node name="NoNameIn" type="MeshInstance3D" parent="Walls/Meshes"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.692609, 3.0078, 2.12314)
+material_override = ExtResource("3_ivs2h")
 mesh = SubResource("BoxMesh_h83j5")
 skeleton = NodePath("../..")
 
 [node name="NoNameOut" type="MeshInstance3D" parent="Walls/Meshes"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.97743, 3.0078, -1.18806)
+material_override = ExtResource("3_ivs2h")
 mesh = SubResource("BoxMesh_h83j5")
 skeleton = NodePath("../..")
 
@@ -118,6 +130,7 @@ mesh = SubResource("BoxMesh_gbtbj")
 
 [node name="KickabkeJump" type="MeshInstance3D" parent="Walls/Meshes"]
 transform = Transform3D(0.905628, 0.424073, 0, -0.424073, 0.905628, 0, 0, 0, 1, -3.36634, 0.471371, 0.646516)
+material_override = ExtResource("2_3ikwi")
 mesh = SubResource("PlaneMesh_qfh4q")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Walls/Meshes/KickabkeJump"]

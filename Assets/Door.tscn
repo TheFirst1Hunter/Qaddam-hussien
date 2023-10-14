@@ -1,6 +1,7 @@
-[gd_scene load_steps=14 format=3 uid="uid://dsdg7jp6jutb0"]
+[gd_scene load_steps=16 format=3 uid="uid://dsdg7jp6jutb0"]
 
 [ext_resource type="Script" path="res://Assets/Door.gd" id="1_y5o81"]
+[ext_resource type="Texture2D" uid="uid://cvsb7t4emnayf" path="res://Assets/Textures/Glass.jpg" id="2_p0hqe"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fp04l"]
 resource_name = "Metal"
@@ -40,13 +41,8 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_x1at8")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_84wb5"]
-resource_name = "Door"
-cull_mode = 2
-vertex_color_use_as_albedo = true
-albedo_color = Color(0.347485, 0.347485, 0.347485, 1)
-metallic = 1.0
-roughness = 0.5
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ntosm"]
+albedo_texture = ExtResource("2_p0hqe")
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_qtxmc"]
 _surfaces = [{
@@ -69,7 +65,7 @@ _surfaces = [{
 "format": 4119,
 "index_count": 36,
 "index_data": PackedByteArray(1, 0, 9, 0, 7, 0, 1, 0, 3, 0, 9, 0, 17, 0, 22, 0, 19, 0, 17, 0, 14, 0, 22, 0, 5, 0, 23, 0, 11, 0, 5, 0, 20, 0, 23, 0, 6, 0, 15, 0, 0, 0, 6, 0, 12, 0, 15, 0, 10, 0, 13, 0, 8, 0, 10, 0, 21, 0, 13, 0, 2, 0, 18, 0, 4, 0, 2, 0, 16, 0, 18, 0),
-"material": SubResource("StandardMaterial3D_84wb5"),
+"material": SubResource("StandardMaterial3D_ntosm"),
 "name": "Door",
 "primitive": 3,
 "vertex_count": 24,
@@ -78,12 +74,16 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_qtxmc")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ryctm"]
+albedo_texture = ExtResource("2_p0hqe")
+
 [sub_resource type="ArrayMesh" id="ArrayMesh_lltmn"]
 _surfaces = [{
 "aabb": AABB(-1, 0, -1, 2, 0.0264348, 2.00001),
 "format": 4097,
 "index_count": 36,
 "index_data": PackedByteArray(0, 0, 3, 0, 2, 0, 0, 0, 1, 0, 3, 0, 5, 0, 7, 0, 6, 0, 5, 0, 4, 0, 7, 0, 1, 0, 7, 0, 3, 0, 1, 0, 6, 0, 7, 0, 2, 0, 5, 0, 0, 0, 2, 0, 4, 0, 5, 0, 3, 0, 4, 0, 2, 0, 3, 0, 7, 0, 4, 0, 0, 0, 6, 0, 1, 0, 0, 0, 5, 0, 6, 0),
+"material": SubResource("StandardMaterial3D_ryctm"),
 "name": "Door",
 "primitive": 3,
 "vertex_count": 8,
@@ -99,7 +99,7 @@ _surfaces = [{
 "format": 4119,
 "index_count": 36,
 "index_data": PackedByteArray(1, 0, 9, 0, 7, 0, 1, 0, 3, 0, 9, 0, 17, 0, 22, 0, 19, 0, 17, 0, 14, 0, 22, 0, 5, 0, 23, 0, 11, 0, 5, 0, 20, 0, 23, 0, 6, 0, 15, 0, 0, 0, 6, 0, 12, 0, 15, 0, 10, 0, 13, 0, 8, 0, 10, 0, 21, 0, 13, 0, 2, 0, 18, 0, 4, 0, 2, 0, 16, 0, 18, 0),
-"material": SubResource("StandardMaterial3D_84wb5"),
+"material": SubResource("StandardMaterial3D_ryctm"),
 "name": "Door",
 "primitive": 3,
 "vertex_count": 24,
@@ -107,6 +107,45 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_lltmn")
+
+[sub_resource type="Animation" id="Animation_atg4o"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cube002/Plane:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.45, -0.01, 0.005)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Cube002/Plane001:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.45, -0.01, -0.022)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("StaticBody3D/CollisionShape3D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_3vi8t"]
 resource_name = "open"
@@ -146,45 +185,6 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
-}
-
-[sub_resource type="Animation" id="Animation_atg4o"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Cube002/Plane:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-0.45, -0.01, 0.005)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Cube002/Plane001:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0.45, -0.01, -0.022)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("StaticBody3D/CollisionShape3D:disabled")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_y6k0j"]

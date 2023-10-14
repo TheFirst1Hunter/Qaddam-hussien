@@ -1,0 +1,148 @@
+[gd_scene load_steps=17 format=3 uid="uid://br0wapg0qs7qg"]
+
+[ext_resource type="Material" uid="uid://bjmh0hksgeqm5" path="res://Assets/Materials/GND.tres" id="1_du8an"]
+[ext_resource type="Script" path="res://Scripts/Levels/level_004.gd" id="1_lq22w"]
+[ext_resource type="Material" uid="uid://citfwthsykrmg" path="res://Assets/Materials/Wall.tres" id="2_o5t4s"]
+[ext_resource type="PackedScene" uid="uid://dsdg7jp6jutb0" path="res://Assets/Door.tscn" id="4_43k4q"]
+[ext_resource type="PackedScene" uid="uid://by8p77gmthuie" path="res://Locks/joker_hole.tscn" id="4_m711e"]
+[ext_resource type="PackedScene" uid="uid://sbwjcysciyu3" path="res://Assets/Pickable.tscn" id="6_uaqo2"]
+[ext_resource type="PackedScene" uid="uid://cyemi5ptucujf" path="res://Entites/player.tscn" id="6_x1ktq"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_j3xuv"]
+size = Vector2(5, 5)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_dwy2y"]
+lightmap_size_hint = Vector2i(27, 27)
+flip_faces = true
+size = Vector2(5, 5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_sgpg5"]
+size = Vector3(1, 2.8, 5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_2cxqk"]
+size = Vector3(2.5, 1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7tds4"]
+size = Vector3(5, 0.2, 5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hub7r"]
+size = Vector3(1, 2.8, 5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_r4viq"]
+size = Vector3(5, 2.8, 1.29609)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4keu3"]
+size = Vector3(2.07756, 2.8, 0.741)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_iq306"]
+size = Vector3(0.644161, 2.8, 0.460706)
+
+[node name="Level004" type="Node3D"]
+script = ExtResource("1_lq22w")
+
+[node name="Walls" type="Node3D" parent="."]
+
+[node name="Meshes" type="Node3D" parent="Walls"]
+
+[node name="GND" type="MeshInstance3D" parent="Walls/Meshes"]
+material_override = ExtResource("1_du8an")
+mesh = SubResource("PlaneMesh_j3xuv")
+skeleton = NodePath("../..")
+
+[node name="Roof" type="MeshInstance3D" parent="Walls/Meshes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.8, 0)
+material_override = ExtResource("2_o5t4s")
+mesh = SubResource("PlaneMesh_dwy2y")
+skeleton = NodePath("../..")
+
+[node name="right" type="MeshInstance3D" parent="Walls/Meshes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.97461, 1.4094, 0)
+material_override = ExtResource("2_o5t4s")
+mesh = SubResource("BoxMesh_sgpg5")
+skeleton = NodePath("../..")
+
+[node name="left" type="MeshInstance3D" parent="Walls/Meshes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.95217, 1.4094, 2.19039)
+material_override = ExtResource("2_o5t4s")
+mesh = SubResource("BoxMesh_sgpg5")
+skeleton = NodePath("../..")
+
+[node name="in" type="MeshInstance3D" parent="Walls/Meshes"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.022015, 1.4094, -2.90542)
+mesh = SubResource("BoxMesh_sgpg5")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("2_o5t4s")
+
+[node name="out" type="MeshInstance3D" parent="Walls/Meshes"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.80469, 1.4094, 2.12423)
+material_override = ExtResource("2_o5t4s")
+mesh = SubResource("BoxMesh_sgpg5")
+skeleton = NodePath("../..")
+
+[node name="out2" type="MeshInstance3D" parent="Walls/Meshes"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4.2397, 1.4094, 2.12423)
+material_override = ExtResource("2_o5t4s")
+mesh = SubResource("BoxMesh_sgpg5")
+skeleton = NodePath("../..")
+
+[node name="NoName" type="MeshInstance3D" parent="Walls/Meshes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.692609, 3.0078, 2.12314)
+material_override = ExtResource("2_o5t4s")
+mesh = SubResource("BoxMesh_2cxqk")
+skeleton = NodePath("../..")
+
+[node name="NoName2" type="MeshInstance3D" parent="Walls/Meshes"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.94477, 3.10369, -1.22218)
+material_override = ExtResource("2_o5t4s")
+mesh = SubResource("BoxMesh_2cxqk")
+skeleton = NodePath("../..")
+
+[node name="Hitbox" type="Node3D" parent="Walls"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Walls/Hitbox"]
+
+[node name="GND" type="CollisionShape3D" parent="Walls/Hitbox/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0882971, 0)
+shape = SubResource("BoxShape3D_7tds4")
+
+[node name="Right" type="CollisionShape3D" parent="Walls/Hitbox/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.95676, 1.38698, 0)
+shape = SubResource("BoxShape3D_hub7r")
+
+[node name="Left" type="CollisionShape3D" parent="Walls/Hitbox/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.91678, 1.38698, 0)
+shape = SubResource("BoxShape3D_hub7r")
+
+[node name="Back" type="CollisionShape3D" parent="Walls/Hitbox/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.38329, -3.03367)
+shape = SubResource("BoxShape3D_r4viq")
+
+[node name="Front" type="CollisionShape3D" parent="Walls/Hitbox/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.35204, 1.46032, 1.94428)
+shape = SubResource("BoxShape3D_4keu3")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/Hitbox/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.91929, 1.65256, 1.70214)
+shape = SubResource("BoxShape3D_iq306")
+
+[node name="Objects" type="Node3D" parent="."]
+
+[node name="DoorIn" parent="Objects" instance=ExtResource("4_43k4q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.713806, 1.2441, 2.05659)
+
+[node name="DoorOut" parent="Objects" instance=ExtResource("4_43k4q")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.50336, 1.28487, -1.36773)
+
+[node name="JokerGround" parent="Objects" instance=ExtResource("4_m711e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.79819, 0.0381029, -1.14558)
+
+[node name="Pickable" parent="Objects" instance=ExtResource("6_uaqo2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.04839, 0.924549, 0)
+
+[node name="Player" parent="." instance=ExtResource("6_x1ktq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.19314, 0)
+
+[connection signal="pickable_in" from="Objects/JokerGround" to="." method="_on_joker_ground_pickable_in"]
+[connection signal="pickable_out" from="Objects/JokerGround" to="." method="_on_joker_ground_pickable_out"]
+[connection signal="player_in" from="Objects/JokerGround" to="." method="_on_joker_ground_player_in"]
+[connection signal="player_out" from="Objects/JokerGround" to="." method="_on_joker_ground_player_out"]

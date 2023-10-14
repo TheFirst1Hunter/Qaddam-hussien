@@ -4,6 +4,8 @@ signal pickable_in
 signal kickabke_in
 signal pickable_out
 signal kickable_out
+signal player_in
+signal player_out
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -22,6 +24,8 @@ func _on_area_3d_body_entered(body):
 	if body.is_in_group("kickable"):
 		emit_signal("kickabke_in")
 		$AnimationPlayer.play("new_animation")
+	if body is Player:
+		emit_signal("player_in")
 
 
 func _on_area_3d_body_exited(body):
@@ -31,3 +35,5 @@ func _on_area_3d_body_exited(body):
 	if body.is_in_group("kickable"):
 		emit_signal("kickable_out")
 		$AnimationPlayer.play_backwards("new_animation")
+	if body is Player:
+		emit_signal("player_out")

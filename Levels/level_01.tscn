@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://blsaimml2bmwx"]
+[gd_scene load_steps=10 format=3 uid="uid://blsaimml2bmwx"]
 
 [ext_resource type="PackedScene" uid="uid://cw2v3gaduyfxd" path="res://Levels/level_001.tscn" id="1_kr87p"]
 [ext_resource type="PackedScene" uid="uid://c0xt0igq4juul" path="res://Levels/level_002.tscn" id="2_85glf"]
 [ext_resource type="PackedScene" uid="uid://bw6hymrtef7t6" path="res://Levels/level_003.tscn" id="3_cfkxd"]
 [ext_resource type="PackedScene" uid="uid://db6dkllte6bf5" path="res://Levels/test_001.tscn" id="4_ik15b"]
 [ext_resource type="PackedScene" uid="uid://cyemi5ptucujf" path="res://Entites/player.tscn" id="5_1sbcs"]
+[ext_resource type="Material" uid="uid://bjmh0hksgeqm5" path="res://Assets/Materials/GND.tres" id="5_843td"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_cisi8"]
 size = Vector2(15, 50)
@@ -41,6 +42,7 @@ player = NodePath("../../../../Player")
 
 [node name="GND" type="MeshInstance3D" parent="Meshes"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.98264, 0, 7.99995)
+material_override = ExtResource("5_843td")
 mesh = SubResource("PlaneMesh_cisi8")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Meshes/GND"]

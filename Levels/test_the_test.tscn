@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://jw3qm2nc36pk"]
+[gd_scene load_steps=11 format=3 uid="uid://jw3qm2nc36pk"]
 
 [ext_resource type="PackedScene" uid="uid://db6dkllte6bf5" path="res://Levels/test_001.tscn" id="1_e2h0k"]
 [ext_resource type="PackedScene" uid="uid://cyemi5ptucujf" path="res://Entites/player.tscn" id="2_6suyb"]
 [ext_resource type="PackedScene" uid="uid://cw2v3gaduyfxd" path="res://Levels/level_001.tscn" id="3_bbngx"]
 [ext_resource type="PackedScene" uid="uid://c0xt0igq4juul" path="res://Levels/level_002.tscn" id="4_0l3vb"]
 [ext_resource type="PackedScene" uid="uid://bw6hymrtef7t6" path="res://Levels/level_003.tscn" id="5_sa2qd"]
+[ext_resource type="Material" uid="uid://bjmh0hksgeqm5" path="res://Assets/Materials/GND.tres" id="6_hgug0"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_73rdh"]
 size = Vector2(15, 50)
@@ -49,6 +50,7 @@ transform = Transform3D(0.0393994, 0, -0.999224, 0, 1, 0, 0.999224, 0, 0.0393994
 
 [node name="GND" type="MeshInstance3D" parent="Meshes"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.98264, 0, 7.99995)
+material_override = ExtResource("6_hgug0")
 mesh = SubResource("PlaneMesh_73rdh")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Meshes/GND"]
@@ -58,6 +60,7 @@ shape = SubResource("ConcavePolygonShape3D_l1ty5")
 
 [node name="GND2" type="MeshInstance3D" parent="Meshes/GND"]
 transform = Transform3D(1, 0, 7.45058e-09, 0, 1, 0, -7.45058e-09, 0, 1, -17.4281, 0, 16.8835)
+material_override = ExtResource("6_hgug0")
 mesh = SubResource("PlaneMesh_vjiat")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Meshes/GND/GND2"]

@@ -1,28 +1,33 @@
-[gd_scene load_steps=31 format=3 uid="uid://db6dkllte6bf5"]
+[gd_scene load_steps=34 format=3 uid="uid://db6dkllte6bf5"]
 
 [ext_resource type="Script" path="res://Scripts/Levels/test_001.gd" id="1_c07j4"]
 [ext_resource type="PackedScene" uid="uid://dsdg7jp6jutb0" path="res://Assets/Door.tscn" id="1_y7qts"]
+[ext_resource type="Texture2D" uid="uid://daap5tv3ptqkt" path="res://Assets/HDR/kloppenheim_02_puresky_8k.hdr" id="2_hchuk"]
+[ext_resource type="Material" uid="uid://bjmh0hksgeqm5" path="res://Assets/Materials/GND.tres" id="2_n7bph"]
 [ext_resource type="PackedScene" uid="uid://dqnud7cptevde" path="res://Assets/Button.tscn" id="2_pinnm"]
 [ext_resource type="PackedScene" uid="uid://cdjlqsebg18d3" path="res://Locks/kickable_hole.tscn" id="3_c2uvc"]
 [ext_resource type="PackedScene" uid="uid://bk4ncqvufoum" path="res://Assets/Window.glb" id="3_ghvx5"]
+[ext_resource type="Material" uid="uid://citfwthsykrmg" path="res://Assets/Materials/Wall.tres" id="3_xgnp1"]
 [ext_resource type="PackedScene" uid="uid://b6t105hqhi2q2" path="res://Locks/pickable_hole.tscn" id="4_gjkgu"]
 [ext_resource type="PackedScene" uid="uid://c5fiusv0uf2od" path="res://Assets/'Kickable.tscn" id="5_bo3w3"]
 [ext_resource type="PackedScene" uid="uid://sbwjcysciyu3" path="res://Assets/Pickable.tscn" id="6_jeac4"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ocq61"]
-sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
-ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_5mjjt"]
+panorama = ExtResource("2_hchuk")
 
 [sub_resource type="Sky" id="Sky_he785"]
-sky_material = SubResource("ProceduralSkyMaterial_ocq61")
+sky_material = SubResource("PanoramaSkyMaterial_5mjjt")
 
 [sub_resource type="Environment" id="Environment_8ffhj"]
 background_mode = 2
+background_energy_multiplier = 0.05
 sky = SubResource("Sky_he785")
 tonemap_mode = 2
 glow_enabled = true
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_52fi2"]
+lightmap_size_hint = Vector2i(52, 22)
+material = ExtResource("2_n7bph")
 size = Vector2(10, 4)
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_aaiy4"]
@@ -47,6 +52,7 @@ size = Vector2(10, 2.8)
 data = PackedVector3Array(5, 0, 1.4, -5, 0, 1.4, 5, 0, -1.4, -5, 0, 1.4, -5, 0, -1.4, 5, 0, -1.4)
 
 [sub_resource type="BoxMesh" id="BoxMesh_sidn3"]
+material = ExtResource("3_xgnp1")
 size = Vector3(10, 2.8, 0.3)
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_864xw"]
@@ -152,6 +158,7 @@ shape = SubResource("ConcavePolygonShape3D_aaiy4")
 
 [node name="left" type="MeshInstance3D" parent="GND"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.08165e-12, 5.469)
+material_override = ExtResource("2_n7bph")
 mesh = SubResource("PlaneMesh_rvop8")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="GND/left"]
@@ -174,6 +181,7 @@ shape = SubResource("ConcavePolygonShape3D_nx8c4")
 
 [node name="pit" type="MeshInstance3D" parent="GND"]
 transform = Transform3D(0.932, 0, 0, 0, 0.932, 0, 0, 0, 0.932, 0.39, -4.769, 2.907)
+material_override = ExtResource("2_n7bph")
 mesh = SubResource("PlaneMesh_cstvt")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="GND/pit"]
@@ -203,6 +211,7 @@ shape = SubResource("ConcavePolygonShape3D_gfgou")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Walls"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.51375, 1.4087, 4.67895)
+material_override = ExtResource("3_xgnp1")
 mesh = SubResource("BoxMesh_6b5v6")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Walls/MeshInstance3D"]
@@ -212,10 +221,12 @@ shape = SubResource("ConcavePolygonShape3D_183kb")
 
 [node name="8" type="MeshInstance3D" parent="Walls"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.52698, 1.39498, -4.5633)
+material_override = ExtResource("3_xgnp1")
 mesh = SubResource("BoxMesh_6b5v6")
 
 [node name="9" type="MeshInstance3D" parent="Walls"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.23102, 1.4087, 4.52565)
+material_override = ExtResource("3_xgnp1")
 mesh = SubResource("BoxMesh_6b5v6")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Walls/9"]
@@ -225,6 +236,7 @@ shape = SubResource("ConcavePolygonShape3D_300rv")
 
 [node name="10" type="MeshInstance3D" parent="Walls"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.20333, 1.39498, -4.5152)
+material_override = ExtResource("3_xgnp1")
 mesh = SubResource("BoxMesh_6b5v6")
 
 [node name="Doors" type="Node3D" parent="."]
