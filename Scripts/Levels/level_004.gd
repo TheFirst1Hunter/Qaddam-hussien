@@ -27,3 +27,21 @@ func _on_joker_ground_player_in():
 
 func _on_joker_ground_player_out():
 	doorOut.close()
+
+
+func _on_joker_ground_kickabke_in():
+	doorOut.open()
+
+
+func _on_joker_ground_kickable_out():
+	doorOut.close()
+
+
+func _on_player_in_door_body_entered(body):
+	if body is Player:
+		doorIn.open()
+
+
+func _on_player_in_door_body_exited(body):
+	if body is Player:
+		doorIn.close()

@@ -5,7 +5,7 @@ class_name Player
 @export var mouse_sensitivity:float = 0.005
 @export var SPEED = 5.0
 @export var JUMP_VELOCITY = 4.5
-@export var kick_power:int = 700
+@export var kick_power:int = 900
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -43,7 +43,7 @@ func _input(event):
 
 	head.rotate_x(clamp(((-event.relative.y * mouse_sensitivity)),-1,1))
 	
-	head.rotation_degrees.x = clamp(((head.rotation_degrees.x)),-50,60)
+	head.rotation_degrees.x = clamp(((head.rotation_degrees.x)),-80,60)
 
 func collide_with_kicables():
 	for col_idx in get_slide_collision_count():

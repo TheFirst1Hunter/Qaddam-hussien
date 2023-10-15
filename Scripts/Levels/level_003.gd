@@ -1,7 +1,7 @@
 extends Node3D
 
 @export var player:Player
-@onready var init_player_location = player.global_transform
+@onready var init_player_location = $Areas/PlayerLocation.global_transform
 @onready var init_kickable_location = $"Objects/Kickable".global_transform
 @onready var door:Door = $"Objects/Door"
 @onready var doorIn:Door = $"Objects/DoorIn"

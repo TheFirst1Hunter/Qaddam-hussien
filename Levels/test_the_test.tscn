@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://jw3qm2nc36pk"]
+[gd_scene load_steps=15 format=3 uid="uid://jw3qm2nc36pk"]
 
 [ext_resource type="PackedScene" uid="uid://db6dkllte6bf5" path="res://Levels/test_001.tscn" id="1_e2h0k"]
 [ext_resource type="PackedScene" uid="uid://cyemi5ptucujf" path="res://Entites/player.tscn" id="2_6suyb"]
@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://c0xt0igq4juul" path="res://Levels/level_002.tscn" id="4_0l3vb"]
 [ext_resource type="PackedScene" uid="uid://bw6hymrtef7t6" path="res://Levels/level_003.tscn" id="5_sa2qd"]
 [ext_resource type="Material" uid="uid://bjmh0hksgeqm5" path="res://Assets/Materials/GND.tres" id="6_hgug0"]
+[ext_resource type="PackedScene" uid="uid://br0wapg0qs7qg" path="res://Levels/level_004.tscn" id="6_xl3rd"]
+[ext_resource type="PackedScene" uid="uid://bik6wqe8d6blm" path="res://Levels/level_005.tscn" id="7_y4kaj"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_73rdh"]
 size = Vector2(15, 50)
@@ -19,9 +21,16 @@ size = Vector2(20, 6)
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_43188"]
 data = PackedVector3Array(10, 0, 3, -10, 0, 3, 10, 0, -3, -10, 0, 3, -10, 0, -3, 10, 0, -3)
 
+[sub_resource type="PlaneMesh" id="PlaneMesh_x6ixs"]
+size = Vector2(10, 6)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_0ke7g"]
+data = PackedVector3Array(5, 0, 3, -5, 0, 3, 5, 0, -3, -5, 0, 3, -5, 0, -3, 5, 0, -3)
+
 [node name="testTheTest" type="Node3D"]
 
-[node name="Test001" parent="." instance=ExtResource("1_e2h0k")]
+[node name="Test001" parent="." node_paths=PackedStringArray("player") instance=ExtResource("1_e2h0k")]
+player = NodePath("../Player")
 
 [node name="pickableHole" parent="Test001/Objects" index="7" node_paths=PackedStringArray("player")]
 player = NodePath("../../../Player")
@@ -43,6 +52,13 @@ player = NodePath("../../../../Player")
 
 [node name="Level003" parent="Levels" node_paths=PackedStringArray("player") instance=ExtResource("5_sa2qd")]
 transform = Transform3D(0.99987, 0, -0.0161262, 0, 1, 0, 0.0161262, 0, 0.99987, 0.966691, 0, 18.4243)
+player = NodePath("../../Player")
+
+[node name="Level004" parent="Levels" instance=ExtResource("6_xl3rd")]
+transform = Transform3D(-0.998552, 0, 0.0538, 0, 1, 0, -0.0538, 0, -0.998552, -10.8429, 0, 44.5611)
+
+[node name="Level005" parent="Levels" node_paths=PackedStringArray("player") instance=ExtResource("7_y4kaj")]
+transform = Transform3D(7.45058e-08, 0, 1, 0, 1, 0, -1, 0, 7.45058e-08, 4.2737, -0.0136123, 45.1645)
 player = NodePath("../../Player")
 
 [node name="Meshes" type="Node3D" parent="."]
@@ -67,6 +83,26 @@ mesh = SubResource("PlaneMesh_vjiat")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Meshes/GND/GND2/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_43188")
+
+[node name="GND3" type="MeshInstance3D" parent="Meshes/GND"]
+transform = Transform3D(1, 0, 7.45058e-09, 0, 1, 0, -7.45058e-09, 0, 1, -18.093, 0, 33.7457)
+material_override = ExtResource("6_hgug0")
+mesh = SubResource("PlaneMesh_vjiat")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Meshes/GND/GND3"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Meshes/GND/GND3/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_43188")
+
+[node name="GND4" type="MeshInstance3D" parent="Meshes/GND"]
+transform = Transform3D(0.999999, 0, 1.11759e-08, 0, 1, 0, -1.11759e-08, 0, 0.999999, -5.10801, 0, 39.8759)
+material_override = ExtResource("6_hgug0")
+mesh = SubResource("PlaneMesh_x6ixs")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Meshes/GND/GND4"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Meshes/GND/GND4/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_0ke7g")
 
 [editable path="Test001"]
 [editable path="Levels/Level002"]

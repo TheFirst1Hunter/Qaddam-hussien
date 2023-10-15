@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://db6dkllte6bf5"]
+[gd_scene load_steps=35 format=3 uid="uid://db6dkllte6bf5"]
 
 [ext_resource type="Script" path="res://Scripts/Levels/test_001.gd" id="1_c07j4"]
 [ext_resource type="PackedScene" uid="uid://dsdg7jp6jutb0" path="res://Assets/Door.tscn" id="1_y7qts"]
@@ -20,7 +20,6 @@ sky_material = SubResource("PanoramaSkyMaterial_5mjjt")
 
 [sub_resource type="Environment" id="Environment_8ffhj"]
 background_mode = 2
-background_energy_multiplier = 0.05
 sky = SubResource("Sky_he785")
 tonemap_mode = 2
 glow_enabled = true
@@ -138,8 +137,12 @@ _data = {
 [sub_resource type="BoxShape3D" id="BoxShape3D_5xpeh"]
 size = Vector3(1, 2.63174, 1.66803)
 
-[node name="Test001" type="Node3D"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_1n68m"]
+size = Vector3(15, 1, 5)
+
+[node name="Test001" type="Node3D" node_paths=PackedStringArray("player")]
 script = ExtResource("1_c07j4")
+player = NodePath("")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_8ffhj")
@@ -295,8 +298,18 @@ libraries = {
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.36056, 1.13857, 0)
 shape = SubResource("BoxShape3D_5xpeh")
 
+[node name="FallArea" type="Area3D" parent="Areas"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Areas/FallArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.94502, 2.92366)
+shape = SubResource("BoxShape3D_1n68m")
+
+[node name="PlayerLocation" type="Node3D" parent="Areas"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.19287, 1.40589, 0)
+
 [connection signal="button_pressed" from="Objects/Button" to="." method="_on_button_button_pressed"]
 [connection signal="kickable_in" from="Objects/KickableHole" to="." method="_on_kickable_hole_kickable_in"]
 [connection signal="pickable_in" from="Objects/pickableHole" to="." method="_on_pickable_hole_pickable_in"]
 [connection signal="body_entered" from="Areas/PlayerOpenDoor" to="." method="_on_player_open_door_body_entered"]
 [connection signal="body_exited" from="Areas/PlayerOpenDoor" to="." method="_on_player_open_door_body_exited"]
+[connection signal="body_entered" from="Areas/FallArea" to="." method="_on_fall_area_body_entered"]

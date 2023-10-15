@@ -5,8 +5,7 @@
 [ext_resource type="Material" uid="uid://citfwthsykrmg" path="res://Assets/Materials/Wall.tres" id="2_o5t4s"]
 [ext_resource type="PackedScene" uid="uid://dsdg7jp6jutb0" path="res://Assets/Door.tscn" id="4_43k4q"]
 [ext_resource type="PackedScene" uid="uid://by8p77gmthuie" path="res://Locks/joker_hole.tscn" id="4_m711e"]
-[ext_resource type="PackedScene" uid="uid://sbwjcysciyu3" path="res://Assets/Pickable.tscn" id="6_uaqo2"]
-[ext_resource type="PackedScene" uid="uid://cyemi5ptucujf" path="res://Entites/player.tscn" id="6_x1ktq"]
+[ext_resource type="PackedScene" uid="uid://c5fiusv0uf2od" path="res://Assets/'Kickable.tscn" id="7_47mpu"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_j3xuv"]
 size = Vector2(5, 5)
@@ -36,6 +35,9 @@ size = Vector3(2.07756, 2.8, 0.741)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_iq306"]
 size = Vector3(0.644161, 2.8, 0.460706)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3ne4v"]
+size = Vector3(1.31647, 1.85781, 1)
 
 [node name="Level004" type="Node3D"]
 script = ExtResource("1_lq22w")
@@ -110,7 +112,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.95676, 1.38698, 0)
 shape = SubResource("BoxShape3D_hub7r")
 
 [node name="Left" type="CollisionShape3D" parent="Walls/Hitbox/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.91678, 1.38698, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.91678, 1.38698, 1.95448)
 shape = SubResource("BoxShape3D_hub7r")
 
 [node name="Back" type="CollisionShape3D" parent="Walls/Hitbox/StaticBody3D"]
@@ -130,19 +132,28 @@ shape = SubResource("BoxShape3D_iq306")
 [node name="DoorIn" parent="Objects" instance=ExtResource("4_43k4q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.713806, 1.2441, 2.05659)
 
-[node name="DoorOut" parent="Objects" instance=ExtResource("4_43k4q")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.50336, 1.28487, -1.36773)
-
 [node name="JokerGround" parent="Objects" instance=ExtResource("4_m711e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.79819, 0.0381029, -1.14558)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.79819, 0.0381029, -1.92235)
 
-[node name="Pickable" parent="Objects" instance=ExtResource("6_uaqo2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.04839, 0.924549, 0)
+[node name="DoorOut" parent="Objects" instance=ExtResource("4_43k4q")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.46597, 1.25177, -1.33868)
 
-[node name="Player" parent="." instance=ExtResource("6_x1ktq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.19314, 0)
+[node name="Kickable" parent="." instance=ExtResource("7_47mpu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.859731, 0.851476, 0)
 
+[node name="Areas" type="Node3D" parent="."]
+
+[node name="PlayerInDoor" type="Area3D" parent="Areas"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Areas/PlayerInDoor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.742124, 1.35164, 2.31832)
+shape = SubResource("BoxShape3D_3ne4v")
+
+[connection signal="kickabke_in" from="Objects/JokerGround" to="." method="_on_joker_ground_kickabke_in"]
+[connection signal="kickable_out" from="Objects/JokerGround" to="." method="_on_joker_ground_kickable_out"]
 [connection signal="pickable_in" from="Objects/JokerGround" to="." method="_on_joker_ground_pickable_in"]
 [connection signal="pickable_out" from="Objects/JokerGround" to="." method="_on_joker_ground_pickable_out"]
 [connection signal="player_in" from="Objects/JokerGround" to="." method="_on_joker_ground_player_in"]
 [connection signal="player_out" from="Objects/JokerGround" to="." method="_on_joker_ground_player_out"]
+[connection signal="body_entered" from="Areas/PlayerInDoor" to="." method="_on_player_in_door_body_entered"]
+[connection signal="body_exited" from="Areas/PlayerInDoor" to="." method="_on_player_in_door_body_exited"]
