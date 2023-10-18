@@ -1,8 +1,7 @@
-[gd_scene load_steps=35 format=3 uid="uid://db6dkllte6bf5"]
+[gd_scene load_steps=31 format=3 uid="uid://db6dkllte6bf5"]
 
 [ext_resource type="Script" path="res://Scripts/Levels/test_001.gd" id="1_c07j4"]
 [ext_resource type="PackedScene" uid="uid://dsdg7jp6jutb0" path="res://Assets/Door.tscn" id="1_y7qts"]
-[ext_resource type="Texture2D" uid="uid://daap5tv3ptqkt" path="res://Assets/HDR/kloppenheim_02_puresky_8k.hdr" id="2_hchuk"]
 [ext_resource type="Material" uid="uid://bjmh0hksgeqm5" path="res://Assets/Materials/GND.tres" id="2_n7bph"]
 [ext_resource type="PackedScene" uid="uid://dqnud7cptevde" path="res://Assets/Button.tscn" id="2_pinnm"]
 [ext_resource type="PackedScene" uid="uid://cdjlqsebg18d3" path="res://Locks/kickable_hole.tscn" id="3_c2uvc"]
@@ -11,19 +10,6 @@
 [ext_resource type="PackedScene" uid="uid://b6t105hqhi2q2" path="res://Locks/pickable_hole.tscn" id="4_gjkgu"]
 [ext_resource type="PackedScene" uid="uid://c5fiusv0uf2od" path="res://Assets/'Kickable.tscn" id="5_bo3w3"]
 [ext_resource type="PackedScene" uid="uid://sbwjcysciyu3" path="res://Assets/Pickable.tscn" id="6_jeac4"]
-
-[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_5mjjt"]
-panorama = ExtResource("2_hchuk")
-
-[sub_resource type="Sky" id="Sky_he785"]
-sky_material = SubResource("PanoramaSkyMaterial_5mjjt")
-
-[sub_resource type="Environment" id="Environment_8ffhj"]
-background_mode = 2
-background_energy_multiplier = 0.25
-sky = SubResource("Sky_he785")
-tonemap_mode = 2
-glow_enabled = true
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_52fi2"]
 lightmap_size_hint = Vector2i(52, 22)
@@ -144,9 +130,6 @@ size = Vector3(15, 1, 5)
 [node name="Test001" type="Node3D" node_paths=PackedStringArray("player")]
 script = ExtResource("1_c07j4")
 player = NodePath("")
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_8ffhj")
 
 [node name="GND" type="Node3D" parent="."]
 
