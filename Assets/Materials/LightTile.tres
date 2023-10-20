@@ -1,0 +1,55 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://drwg0t4b7u8us"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e0uws"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0)
+emission_enabled = true
+emission = Color(1, 1, 1, 0)
+emission_energy_multiplier = 2.0
+
+[sub_resource type="Shader" id="Shader_6s4qd"]
+code = "shader_type spatial;
+render_mode specular_schlick_ggx, ambient_light_disabled;
+
+uniform vec4 Color : source_color = vec4(1,1,1,0.5);
+uniform float Shine = 0.2;
+uniform float Roughness = 0.2;
+
+
+void vertex() {
+// Output:0
+
+}
+
+void fragment() {
+// ColorUniform:6
+	vec3 n_out6p0 = Color.rgb;
+	float n_out6p1 = Color.a;
+
+// ScalarUniform:3
+	float n_out3p0 = Shine;
+
+// ScalarUniform:4
+	float n_out4p0 = Roughness;
+
+// Output:0
+	ALBEDO = n_out6p0;
+	ALPHA = n_out6p1;
+	METALLIC = n_out3p0;
+	ROUGHNESS = n_out4p0;
+
+}
+
+void light() {
+// Output:0
+
+}"
+
+[resource]
+resource_local_to_scene = true
+render_priority = 0
+next_pass = SubResource("StandardMaterial3D_e0uws")
+shader = SubResource("Shader_6s4qd")
+shader_parameter/Color = Color(0.485703, 0.485704, 0.485703, 0.5)
+shader_parameter/Shine = 0.5
+shader_parameter/Roughness = 0.5

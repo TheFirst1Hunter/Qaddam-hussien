@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://b88ecu65rimbs"]
+[gd_scene load_steps=13 format=3 uid="uid://b88ecu65rimbs"]
 
 [ext_resource type="Material" uid="uid://bjmh0hksgeqm5" path="res://Assets/Materials/GND.tres" id="1_vc3xc"]
 [ext_resource type="Material" uid="uid://citfwthsykrmg" path="res://Assets/Materials/Wall.tres" id="2_yia0b"]
 [ext_resource type="Shader" path="res://Assets/Shaders/Glass.gdshader" id="3_j253e"]
+[ext_resource type="PackedScene" uid="uid://cyf5npc6qfslk" path="res://Assets/LightTile.glb" id="4_fytgx"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_rlspj"]
 material = ExtResource("1_vc3xc")
@@ -65,3 +66,6 @@ shape = SubResource("ConcavePolygonShape3D_dpifn")
 [node name="Celing" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3879, 0, 0)
 mesh = SubResource("BoxMesh_8hcrq")
+
+[node name="LightTile" parent="." instance=ExtResource("4_fytgx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000529885, 0, 2.28105)
