@@ -19,7 +19,6 @@ func _input(event):
 		if ray_cast.is_colliding():
 			var collider = ray_cast.get_collider()
 			var pushDirection : Vector3 = -get_global_transform().basis.z
-			print(pushDirection)
 #			pushDirection = pushDirection.normalized()        
 			if collider.is_in_group("kickable"):
 				collider.apply_central_force(pushDirection * get_parent().kick_power)

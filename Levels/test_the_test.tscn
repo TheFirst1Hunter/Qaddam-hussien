@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://jw3qm2nc36pk"]
+[gd_scene load_steps=13 format=3 uid="uid://jw3qm2nc36pk"]
 
 [ext_resource type="Texture2D" uid="uid://daap5tv3ptqkt" path="res://Assets/HDR/kloppenheim_02_puresky_8k.hdr" id="1_65r2y"]
 [ext_resource type="PackedScene" uid="uid://db6dkllte6bf5" path="res://Levels/test_001.tscn" id="1_e2h0k"]
@@ -9,7 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://br0wapg0qs7qg" path="res://Levels/level_004.tscn" id="6_xl3rd"]
 [ext_resource type="PackedScene" uid="uid://bik6wqe8d6blm" path="res://Levels/level_005.tscn" id="7_y4kaj"]
 [ext_resource type="MeshLibrary" uid="uid://b2lpf7x02brbv" path="res://Utils/Grids.tres" id="9_4h583"]
-[ext_resource type="PackedScene" uid="uid://bk4ncqvufoum" path="res://Assets/Window.glb" id="10_x30w5"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_ko0ic"]
 panorama = ExtResource("1_65r2y")
@@ -33,25 +32,7 @@ environment = SubResource("Environment_hk3x8")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.9815, 0, 22.8889)
 player = NodePath("../Player")
 
-[node name="Platforn" parent="Test001/GND" index="2"]
-transform = Transform3D(1, 0, -1.26261e-21, -1.26261e-21, -3.61999e-06, -1, 0, 1, -3.61999e-06, 3.09599, -0.100262, 1.5405)
-
-[node name="window" parent="Test001/Objects" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-
-[node name="window5" parent="Test001/Objects" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-
-[node name="window2" parent="Test001/Objects" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-
-[node name="window3" parent="Test001/Objects" index="3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-
-[node name="window4" parent="Test001/Objects" index="4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-
-[node name="pickableHole" parent="Test001/Objects" index="7" node_paths=PackedStringArray("player")]
+[node name="pickableHole" parent="Test001/Objects" index="2" node_paths=PackedStringArray("player")]
 player = NodePath("../../../Player")
 
 [node name="Player" parent="." instance=ExtResource("2_6suyb")]
@@ -103,9 +84,6 @@ data = {
 "cells": PackedInt32Array(131097, 20, 851969, 131097, 21, 851969, 131095, 21, 851969, 131095, 20, 851969, 131095, 19, 851969, 131095, 18, 851969, 65561, 20, 851969, 65561, 21, 851969, 65559, 21, 851969, 65559, 20, 851969, 65559, 19, 851969, 65559, 18, 851969, 23, 21, 851969, 23, 20, 851969, 23, 18, 851969, 23, 19, 851969, 25, 21, 851969, 25, 20, 851969, 65534, 25, 1310721, 65534, 26, 1310721, 65532, 26, 1310721, 65532, 25, 1310721, 131068, 25, 1310721, 131068, 26, 1310721, 131070, 25, 1310721, 131070, 26, 1310721, 196604, 26, 1310721, 196604, 25, 1310721, 196606, 25, 1310721, 196606, 26, 1310721)
 }
 metadata/_editor_floor_ = Vector3(0, 2, 0)
-
-[node name="Window" parent="." instance=ExtResource("10_x30w5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.5956, 0, 15.3184)
 
 [editable path="Test001"]
 [editable path="Levels/Level002"]

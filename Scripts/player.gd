@@ -50,7 +50,7 @@ func collide_with_kicables():
 		var col := get_slide_collision(col_idx)
 		if col.get_collider() is RigidBody3D :
 			col.get_collider().apply_central_impulse(-col.get_normal() * 0.1)
-			col.get_collider().apply_impulse(-col.get_normal() * 0.01, col.get_position())
+#			col.get_collider().apply_impulse(-col.get_normal() * 0.1, col.get_position())
 
 func drop_pickable():
 	$Pickable.picked_object = null

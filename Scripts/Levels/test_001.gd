@@ -16,7 +16,7 @@ func _process(delta):
 	pass
 
 func reset_locations():
-	player.global_transform = $Areas/PlayerLocation.global_transform
+	player.global_transsform = $Areas/PlayerLocation.global_transform
 	$Objects/Kickable.sleeping = true
 	$Objects/Pickable.global_transform = pickable_location
 	$Objects/Kickable.global_transform = kickable_location

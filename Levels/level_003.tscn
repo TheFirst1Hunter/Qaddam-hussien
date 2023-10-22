@@ -211,11 +211,11 @@ skeleton = NodePath("../..")
 shape = SubResource("ConcavePolygonShape3D_inktc")
 
 [node name="kickablePlatform" type="MeshInstance3D" parent="Walls/Meshes"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.1057, 0, 0.301553)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.636, 0, 0.301553)
 mesh = SubResource("BoxMesh_gbtbj")
 
 [node name="kickablePlatform2" type="MeshInstance3D" parent="Walls/Meshes"]
-transform = Transform3D(0.0093897, -0.999956, 0, 0.999956, 0.0093897, 0, 0, 0, 1, -12.994, 1.21706, 0.301553)
+transform = Transform3D(0.0093897, -0.999956, 0, 0.999956, 0.0093897, 0, 0, 0, 1, -11.5243, 1.21706, 0.301553)
 mesh = SubResource("BoxMesh_gbtbj")
 
 [node name="KickabkeJump" type="MeshInstance3D" parent="Walls/Meshes"]
@@ -247,7 +247,7 @@ skeleton = NodePath("../../../..")
 [node name="Objects" type="Node3D" parent="."]
 
 [node name="KickableHole" parent="Objects" instance=ExtResource("1_hlaki")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.9934, 0.679454, 0.289169)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.2869, 0.679454, 0.326467)
 
 [node name="Kickable" parent="Objects" instance=ExtResource("2_ysnkx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.17375, 0.267132, 0.583491)
