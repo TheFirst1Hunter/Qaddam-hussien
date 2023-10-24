@@ -3,16 +3,16 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://despxlw26d1x4"
-path.bptc="res://.godot/imported/Kloofendal Misty Puresky.hdr-be80eb6fd186cd81d47a8f160a4dcc0e.bptc.ctex"
+path.astc="res://.godot/imported/Kloofendal Misty Puresky.hdr-be80eb6fd186cd81d47a8f160a4dcc0e.astc.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Assets/Kloofendal Misty Puresky.hdr"
-dest_files=["res://.godot/imported/Kloofendal Misty Puresky.hdr-be80eb6fd186cd81d47a8f160a4dcc0e.bptc.ctex"]
+dest_files=["res://.godot/imported/Kloofendal Misty Puresky.hdr-be80eb6fd186cd81d47a8f160a4dcc0e.astc.ctex"]
 
 [params]
 

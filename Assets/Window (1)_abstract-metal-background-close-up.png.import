@@ -3,9 +3,9 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dpt7xwph1k15e"
-path.s3tc="res://.godot/imported/Window (1)_abstract-metal-background-close-up.png-0786f0b2693dc5147b7808f75382f261.s3tc.ctex"
+path.etc2="res://.godot/imported/Window (1)_abstract-metal-background-close-up.png-0786f0b2693dc5147b7808f75382f261.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={}
@@ -13,7 +13,7 @@ generator_parameters={}
 [deps]
 
 source_file="res://Assets/Window (1)_abstract-metal-background-close-up.png"
-dest_files=["res://.godot/imported/Window (1)_abstract-metal-background-close-up.png-0786f0b2693dc5147b7808f75382f261.s3tc.ctex"]
+dest_files=["res://.godot/imported/Window (1)_abstract-metal-background-close-up.png-0786f0b2693dc5147b7808f75382f261.etc2.ctex"]
 
 [params]
 

@@ -32,6 +32,9 @@ environment = SubResource("Environment_hk3x8")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.9815, 0, 22.8889)
 player = NodePath("../Player")
 
+[node name="Kickable Moving Panel" parent="Test001/GND/Platforn" index="0"]
+transform = Transform3D(-3.59972e-06, 3.84884e-07, 1, 0.117833, 0.993034, 4.19615e-08, -0.993034, 0.117833, -3.61999e-06, -0.0390372, 0.0422046, -0.100262)
+
 [node name="pickableHole" parent="Test001/Objects" index="2" node_paths=PackedStringArray("player")]
 player = NodePath("../../../Player")
 

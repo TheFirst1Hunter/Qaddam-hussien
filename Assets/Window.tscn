@@ -1,10 +1,8 @@
-[gd_scene load_steps=17 format=3 uid="uid://d2okmgw8gx28c"]
+[gd_scene load_steps=10 format=3 uid="uid://d2okmgw8gx28c"]
 
 [ext_resource type="Texture2D" uid="uid://dpt7xwph1k15e" path="res://Assets/Window (1)_abstract-metal-background-close-up.png" id="1_38ckp"]
 [ext_resource type="Script" path="res://Scripts/Window.gd" id="1_hb07l"]
-[ext_resource type="Texture2D" uid="uid://m6r8ejiqj7vn" path="res://Assets/Window (1)_Space Test.png" id="2_i070k"]
 [ext_resource type="Texture2D" uid="uid://bwxwa7ty6mvtx" path="res://icon.svg" id="3_qola0"]
-[ext_resource type="Shader" path="res://Assets/Window.gdshader" id="5_t2xep"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n75np"]
 resource_name = "Metal.001"
@@ -46,103 +44,59 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_l1aqc")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rxhnh"]
-resource_name = "Glass"
-cull_mode = 2
-vertex_color_use_as_albedo = true
-albedo_color = Color(0.906332, 0.906332, 0.906332, 1)
-albedo_texture = ExtResource("3_qola0")
-metallic = 0.0906345
-roughness = 0.0936556
+[sub_resource type="Shader" id="Shader_m8vu0"]
+code = "shader_type spatial;
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_48q2k"]
-_surfaces = [{
-"aabb": AABB(-1.49012e-08, -0.220369, -0.220369, 1.00149e-05, 0.440738, 0.440738),
-"format": 4097,
-"index_count": 42,
-"index_data": PackedByteArray(15, 0, 1, 0, 0, 0, 1, 0, 3, 0, 2, 0, 3, 0, 5, 0, 4, 0, 5, 0, 7, 0, 6, 0, 7, 0, 9, 0, 8, 0, 9, 0, 11, 0, 10, 0, 11, 0, 13, 0, 12, 0, 13, 0, 15, 0, 14, 0, 15, 0, 3, 0, 1, 0, 3, 0, 7, 0, 5, 0, 7, 0, 11, 0, 9, 0, 11, 0, 15, 0, 13, 0, 15, 0, 7, 0, 3, 0, 7, 0, 15, 0, 11, 0),
-"name": "Glass",
-"primitive": 3,
-"vertex_count": 16,
-"vertex_data": PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 103, 168, 97, 190, 0, 0, 0, 50, 0, 182, 172, 189, 12, 123, 80, 190, 0, 0, 128, 50, 104, 144, 31, 190, 110, 144, 31, 190, 0, 0, 128, 50, 16, 123, 80, 190, 6, 182, 172, 189, 0, 0, 128, 50, 104, 168, 97, 190, 0, 0, 0, 177, 0, 0, 128, 50, 16, 123, 80, 190, 6, 182, 172, 61, 0, 0, 128, 50, 104, 144, 31, 190, 110, 144, 31, 62, 0, 0, 0, 50, 0, 182, 172, 189, 12, 123, 80, 62, 0, 0, 0, 0, 0, 0, 0, 0, 103, 168, 97, 62, 0, 0, 0, 178, 0, 182, 172, 61, 12, 123, 80, 62, 0, 0, 128, 178, 104, 144, 31, 62, 110, 144, 31, 62, 0, 0, 128, 178, 16, 123, 80, 62, 6, 182, 172, 61, 0, 0, 128, 178, 104, 168, 97, 62, 0, 0, 0, 177, 0, 0, 128, 178, 16, 123, 80, 62, 6, 182, 172, 189, 0, 0, 128, 178, 104, 144, 31, 62, 110, 144, 31, 190, 0, 0, 0, 178, 0, 182, 172, 61, 12, 123, 80, 190)
-}]
-blend_shape_mode = 0
+uniform sampler2D albedo : source_color;
+uniform float radius : hint_range(0.0, 1.0);
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_t6422"]
-resource_name = "Window (1)_Cylinder_005"
-_surfaces = [{
-"aabb": AABB(-1.49012e-08, -0.220369, -0.220369, 1.00149e-05, 0.440738, 0.440738),
-"attribute_data": PackedByteArray(230, 186, 222, 62, 224, 172, 255, 61, 85, 192, 11, 63, 80, 108, 22, 62, 228, 208, 35, 63, 192, 189, 86, 62, 60, 229, 51, 63, 252, 127, 155, 62, 178, 138, 57, 63, 184, 69, 212, 62, 60, 229, 51, 63, 187, 133, 6, 63, 227, 208, 35, 63, 74, 150, 30, 63, 82, 192, 11, 63, 164, 170, 46, 63, 230, 186, 222, 62, 28, 80, 52, 63, 49, 245, 165, 62, 164, 170, 46, 63, 42, 168, 107, 62, 74, 150, 30, 63, 191, 86, 43, 62, 187, 133, 6, 63, 214, 192, 20, 62, 186, 69, 212, 62, 183, 86, 43, 62, 252, 127, 155, 62, 31, 168, 107, 62, 192, 189, 86, 62, 49, 245, 165, 62, 80, 108, 22, 62),
-"format": 4119,
-"index_count": 42,
-"index_data": PackedByteArray(15, 0, 1, 0, 0, 0, 1, 0, 3, 0, 2, 0, 3, 0, 5, 0, 4, 0, 5, 0, 7, 0, 6, 0, 7, 0, 9, 0, 8, 0, 9, 0, 11, 0, 10, 0, 11, 0, 13, 0, 12, 0, 13, 0, 15, 0, 14, 0, 15, 0, 3, 0, 1, 0, 3, 0, 7, 0, 5, 0, 7, 0, 11, 0, 9, 0, 11, 0, 15, 0, 13, 0, 15, 0, 7, 0, 3, 0, 7, 0, 15, 0, 11, 0),
-"material": SubResource("StandardMaterial3D_rxhnh"),
-"name": "Glass",
-"primitive": 3,
-"vertex_count": 16,
-"vertex_data": PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 103, 168, 97, 190, 0, 0, 255, 127, 255, 127, 254, 127, 0, 0, 0, 50, 0, 182, 172, 189, 12, 123, 80, 190, 0, 0, 255, 127, 255, 127, 254, 127, 0, 0, 128, 50, 104, 144, 31, 190, 110, 144, 31, 190, 0, 0, 255, 127, 255, 127, 254, 127, 0, 0, 128, 50, 16, 123, 80, 190, 6, 182, 172, 189, 0, 0, 255, 127, 255, 127, 254, 127, 0, 0, 128, 50, 104, 168, 97, 190, 0, 0, 0, 177, 0, 0, 255, 127, 255, 127, 254, 127, 0, 0, 128, 50, 16, 123, 80, 190, 6, 182, 172, 61, 0, 0, 255, 127, 255, 127, 254, 127, 0, 0, 128, 50, 104, 144, 31, 190, 110, 144, 31, 62, 0, 0, 255, 127, 255, 127, 254, 127, 0, 0, 0, 50, 0, 182, 172, 189, 12, 123, 80, 62, 0, 0, 255, 127, 255, 127, 254, 127, 0, 0, 0, 0, 0, 0, 0, 0, 103, 168, 97, 62, 0, 0, 255, 127, 255, 127, 254, 127, 0, 0, 0, 178, 0, 182, 172, 61, 12, 123, 80, 62, 0, 0, 255, 127, 255, 127, 254, 127, 0, 0, 128, 178, 104, 144, 31, 62, 110, 144, 31, 62, 0, 0, 255, 127, 255, 127, 254, 127, 0, 0, 128, 178, 16, 123, 80, 62, 6, 182, 172, 61, 0, 0, 255, 127, 255, 127, 254, 127, 0, 0, 128, 178, 104, 168, 97, 62, 0, 0, 0, 177, 0, 0, 255, 127, 255, 127, 254, 127, 0, 0, 128, 178, 16, 123, 80, 62, 6, 182, 172, 189, 0, 0, 255, 127, 255, 127, 254, 127, 0, 0, 128, 178, 104, 144, 31, 62, 110, 144, 31, 190, 0, 0, 255, 127, 255, 127, 254, 127, 0, 0, 0, 178, 0, 182, 172, 61, 12, 123, 80, 190, 0, 0, 255, 127, 255, 127, 254, 127)
-}]
-blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_48q2k")
+float circleShape(vec2 position) {
+  // distance(p1, p2) - returns the distance between two points
+  // https://thebookofshaders.com/glossary/?search=distance
+  // always returns float
+  float value = distance(position, vec2(0.5));
+  // setp(edge, x) - compares two values
+  // https://thebookofshaders.com/glossary/?search=step
+  // edge - edge of step function
+  // x - value used to generate step
+  // x < edge
+  // only retruns either 0.0 or 1.0    
+  return step(radius, value);
+}
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b7yu5"]
-resource_name = "Space Test"
-cull_mode = 2
-vertex_color_use_as_albedo = true
-albedo_texture = ExtResource("2_i070k")
+void fragment() {
+   //float alpha = 1.0 - smoothstep(radius - (radius * 0.01), radius + (radius * 0.01), dot(UV, UV) );
+float circleWidth = 0.2;
+  float circle = circleShape(UV);
+	    ALBEDO = texture(albedo,UV).xyz;
+		if(circle != 0.0){
+			ALPHA = 0.0;
+		}
+	//ALPHA = alpha;
+    // If the alpha channel is below a certain threshold, make it transparent
+    //if (UV.x < 0.5) {
+		//ALBEDO = texture(albedo,UV).xyz;
+ //   }else{
+	//	ALPHA = 0.0;
+	//}
+}
+"
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_hvjcn"]
-_surfaces = [{
-"aabb": AABB(0.00982721, -0.220369, -0.220369, 1.00145e-05, 0.440738, 0.440738),
-"format": 4097,
-"index_count": 42,
-"index_data": PackedByteArray(15, 0, 1, 0, 0, 0, 1, 0, 3, 0, 2, 0, 3, 0, 5, 0, 4, 0, 5, 0, 7, 0, 6, 0, 7, 0, 9, 0, 8, 0, 9, 0, 11, 0, 10, 0, 11, 0, 13, 0, 12, 0, 13, 0, 15, 0, 14, 0, 15, 0, 3, 0, 1, 0, 3, 0, 7, 0, 5, 0, 7, 0, 11, 0, 9, 0, 11, 0, 15, 0, 13, 0, 15, 0, 7, 0, 3, 0, 7, 0, 15, 0, 11, 0),
-"name": "Space Test",
-"primitive": 3,
-"vertex_count": 16,
-"vertex_data": PackedByteArray(94, 2, 33, 60, 0, 0, 128, 52, 103, 168, 97, 190, 102, 2, 33, 60, 224, 181, 172, 189, 12, 123, 80, 190, 110, 2, 33, 60, 88, 144, 31, 190, 110, 144, 31, 190, 110, 2, 33, 60, 0, 123, 80, 190, 6, 182, 172, 189, 110, 2, 33, 60, 88, 168, 97, 190, 171, 170, 170, 175, 110, 2, 33, 60, 0, 123, 80, 190, 6, 182, 172, 61, 110, 2, 33, 60, 88, 144, 31, 190, 110, 144, 31, 62, 102, 2, 33, 60, 224, 181, 172, 189, 12, 123, 80, 62, 94, 2, 33, 60, 0, 0, 128, 52, 103, 168, 97, 62, 86, 2, 33, 60, 32, 182, 172, 61, 12, 123, 80, 62, 78, 2, 33, 60, 120, 144, 31, 62, 110, 144, 31, 62, 78, 2, 33, 60, 32, 123, 80, 62, 6, 182, 172, 61, 78, 2, 33, 60, 120, 168, 97, 62, 171, 170, 170, 175, 78, 2, 33, 60, 32, 123, 80, 62, 6, 182, 172, 189, 78, 2, 33, 60, 120, 144, 31, 62, 110, 144, 31, 190, 86, 2, 33, 60, 32, 182, 172, 61, 12, 123, 80, 190)
-}]
-blend_shape_mode = 0
-
-[sub_resource type="ArrayMesh" id="ArrayMesh_jdfay"]
-resource_name = "Window (1)_Cylinder_001"
-_surfaces = [{
-"aabb": AABB(0.00982721, -0.220369, -0.220369, 1.00145e-05, 0.440738, 0.440738),
-"attribute_data": PackedByteArray(230, 186, 222, 62, 224, 172, 255, 61, 85, 192, 11, 63, 80, 108, 22, 62, 228, 208, 35, 63, 192, 189, 86, 62, 60, 229, 51, 63, 252, 127, 155, 62, 178, 138, 57, 63, 184, 69, 212, 62, 60, 229, 51, 63, 187, 133, 6, 63, 227, 208, 35, 63, 74, 150, 30, 63, 82, 192, 11, 63, 164, 170, 46, 63, 230, 186, 222, 62, 28, 80, 52, 63, 49, 245, 165, 62, 164, 170, 46, 63, 42, 168, 107, 62, 74, 150, 30, 63, 191, 86, 43, 62, 187, 133, 6, 63, 214, 192, 20, 62, 186, 69, 212, 62, 183, 86, 43, 62, 252, 127, 155, 62, 31, 168, 107, 62, 192, 189, 86, 62, 49, 245, 165, 62, 80, 108, 22, 62),
-"format": 4119,
-"index_count": 42,
-"index_data": PackedByteArray(15, 0, 1, 0, 0, 0, 1, 0, 3, 0, 2, 0, 3, 0, 5, 0, 4, 0, 5, 0, 7, 0, 6, 0, 7, 0, 9, 0, 8, 0, 9, 0, 11, 0, 10, 0, 11, 0, 13, 0, 12, 0, 13, 0, 15, 0, 14, 0, 15, 0, 3, 0, 1, 0, 3, 0, 7, 0, 5, 0, 7, 0, 11, 0, 9, 0, 11, 0, 15, 0, 13, 0, 15, 0, 7, 0, 3, 0, 7, 0, 15, 0, 11, 0),
-"material": SubResource("StandardMaterial3D_b7yu5"),
-"name": "Space Test",
-"primitive": 3,
-"vertex_count": 16,
-"vertex_data": PackedByteArray(94, 2, 33, 60, 0, 0, 128, 52, 103, 168, 97, 190, 0, 0, 255, 127, 255, 127, 254, 127, 102, 2, 33, 60, 224, 181, 172, 189, 12, 123, 80, 190, 0, 0, 255, 127, 255, 127, 254, 127, 110, 2, 33, 60, 88, 144, 31, 190, 110, 144, 31, 190, 0, 0, 255, 127, 255, 127, 254, 127, 110, 2, 33, 60, 0, 123, 80, 190, 6, 182, 172, 189, 0, 0, 255, 127, 255, 127, 254, 127, 110, 2, 33, 60, 88, 168, 97, 190, 171, 170, 170, 175, 0, 0, 255, 127, 255, 127, 254, 127, 110, 2, 33, 60, 0, 123, 80, 190, 6, 182, 172, 61, 0, 0, 255, 127, 255, 127, 254, 127, 110, 2, 33, 60, 88, 144, 31, 190, 110, 144, 31, 62, 0, 0, 255, 127, 255, 127, 254, 127, 102, 2, 33, 60, 224, 181, 172, 189, 12, 123, 80, 62, 0, 0, 255, 127, 255, 127, 254, 127, 94, 2, 33, 60, 0, 0, 128, 52, 103, 168, 97, 62, 0, 0, 255, 127, 255, 127, 254, 127, 86, 2, 33, 60, 32, 182, 172, 61, 12, 123, 80, 62, 0, 0, 255, 127, 255, 127, 254, 127, 78, 2, 33, 60, 120, 144, 31, 62, 110, 144, 31, 62, 0, 0, 255, 127, 255, 127, 254, 127, 78, 2, 33, 60, 32, 123, 80, 62, 6, 182, 172, 61, 0, 0, 255, 127, 255, 127, 254, 127, 78, 2, 33, 60, 120, 168, 97, 62, 171, 170, 170, 175, 0, 0, 255, 127, 255, 127, 254, 127, 78, 2, 33, 60, 32, 123, 80, 62, 6, 182, 172, 189, 0, 0, 255, 127, 255, 127, 254, 127, 78, 2, 33, 60, 120, 144, 31, 62, 110, 144, 31, 190, 0, 0, 255, 127, 255, 127, 254, 127, 86, 2, 33, 60, 32, 182, 172, 61, 12, 123, 80, 190, 0, 0, 255, 127, 255, 127, 254, 127)
-}]
-blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_hvjcn")
-
-[sub_resource type="SphereMesh" id="SphereMesh_mk60q"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_it6bv"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_a2l0f"]
 render_priority = 0
-shader = ExtResource("5_t2xep")
-shader_parameter/radius = 0.559
+shader = SubResource("Shader_m8vu0")
+shader_parameter/radius = 0.398
 shader_parameter/albedo = ExtResource("3_qola0")
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_s5f1b"]
+load_path = "res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.etc2.ctex"
 
 [node name="Window" type="Node3D"]
 script = ExtResource("1_hb07l")
 
 [node name="Window" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 3.48787e-16, 1, 3.48787e-16, 1, -3.48787e-16, -1, 3.48787e-16, -4.37114e-08, 0, 0, 0.157455)
 mesh = SubResource("ArrayMesh_2y63a")
-skeleton = NodePath("")
-
-[node name="Glass" type="MeshInstance3D" parent="Window"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.34121, 0, 0)
-mesh = SubResource("ArrayMesh_t6422")
-skeleton = NodePath("")
-
-[node name="Scene" type="MeshInstance3D" parent="Window"]
-mesh = SubResource("ArrayMesh_jdfay")
 skeleton = NodePath("")
 
 [node name="Timer" type="Timer" parent="."]
@@ -157,14 +111,9 @@ render_target_update_mode = 4
 [node name="Camera3D" type="Camera3D" parent="GlassViewport"]
 transform = Transform3D(-4.37114e-08, -3.48787e-16, -1, 3.48787e-16, 1, -3.48787e-16, 1, -3.48787e-16, -4.37114e-08, 0.29, 2.08165e-12, 2.08165e-12)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="GlassViewport/Camera3D"]
-transform = Transform3D(1, 0, 0, 0, 1, -1.12238e-23, 0, -1.12238e-23, 1, -2.96348e-08, -2.36573e-16, -0.677965)
-visible = false
-mesh = SubResource("SphereMesh_mk60q")
-
 [node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform3D(0.00351611, 0, -0.0999382, 0, 0.1, 0, 0.0999382, 0, 0.00351611, -0.144518, 0, 0)
-material_override = SubResource("ShaderMaterial_it6bv")
-texture = ExtResource("3_qola0")
+transform = Transform3D(0.428, -1.49281e-16, 1.49281e-16, 1.49281e-16, 0.428, -1.49281e-16, -1.49281e-16, 1.49281e-16, 0.428, 0, 0, 0.170439)
+material_override = SubResource("ShaderMaterial_a2l0f")
+texture = SubResource("CompressedTexture2D_s5f1b")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
