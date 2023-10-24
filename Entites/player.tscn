@@ -1,10 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://cyemi5ptucujf"]
+[gd_scene load_steps=11 format=3 uid="uid://cyemi5ptucujf"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_7eatl"]
 [ext_resource type="Script" path="res://Scripts/Interaction.gd" id="2_m6pe6"]
 [ext_resource type="Script" path="res://Scripts/Kickable.gd" id="3_h37hf"]
 [ext_resource type="Script" path="res://Scripts/ButtonInteraction.gd" id="4_2n82o"]
 [ext_resource type="Script" path="res://Scripts/KickablePull.gd" id="5_xjjjf"]
+[ext_resource type="AudioStream" uid="uid://dtaucxx8mf6tk" path="res://Assets/Audio/Kick.mp3" id="6_srr3h"]
+[ext_resource type="AudioStream" uid="uid://bh6hmbtkj7iyb" path="res://Assets/Audio/Pick.mp3" id="7_c6ln1"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_yynbc"]
 height = 1.7
@@ -37,8 +39,9 @@ target_position = Vector3(2.08165e-12, 2.08165e-12, -1)
 [node name="PickArea" type="Node3D" parent="Head"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.341949, 0, -1.50944)
 
-[node name="Pickable" type="Node3D" parent="."]
+[node name="Pickable" type="Node3D" parent="." node_paths=PackedStringArray("pick_audio")]
 script = ExtResource("2_m6pe6")
+pick_audio = NodePath("../Audio/Pick")
 
 [node name="Legs" type="Node3D" parent="."]
 
@@ -81,8 +84,9 @@ target_position = Vector3(2.08165e-12, 2.08165e-12, -1)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.127232, 0.059662, -0.558549)
 target_position = Vector3(2.08165e-12, 2.08165e-12, -1)
 
-[node name="Kickable" type="Node3D" parent="."]
+[node name="Kickable" type="Node3D" parent="." node_paths=PackedStringArray("kick_audio")]
 script = ExtResource("3_h37hf")
+kick_audio = NodePath("../Audio/Kick")
 
 [node name="ButtonInteraction" type="Node3D" parent="."]
 script = ExtResource("4_2n82o")
@@ -94,6 +98,14 @@ script = ExtResource("5_xjjjf")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="KickablePull/Area3D"]
 shape = SubResource("SphereShape3D_1q8k1")
+
+[node name="Audio" type="Node3D" parent="."]
+
+[node name="Kick" type="AudioStreamPlayer3D" parent="Audio"]
+stream = ExtResource("6_srr3h")
+
+[node name="Pick" type="AudioStreamPlayer3D" parent="Audio"]
+stream = ExtResource("7_c6ln1")
 
 [connection signal="body_entered" from="KickablePull/Area3D" to="KickablePull" method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="KickablePull/Area3D" to="KickablePull" method="_on_area_3d_body_exited"]

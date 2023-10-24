@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://b6t105hqhi2q2"]
+[gd_scene load_steps=5 format=3 uid="uid://b6t105hqhi2q2"]
 
 [ext_resource type="Script" path="res://Scripts/pickable_hole.gd" id="1_t5ivj"]
 [ext_resource type="PackedScene" uid="uid://d3jj1xtmt0nnr" path="res://Assets/Pickable Platform.tscn" id="2_eyevp"]
+[ext_resource type="AudioStream" uid="uid://51bpwujfo23m" path="res://Assets/Audio/Insert.mp3" id="3_08io8"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_4snx5"]
 margin = 2.329
@@ -19,5 +20,8 @@ shape = SubResource("SphereShape3D_4snx5")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0898992, 0, 0)
 
 [node name="Pickable Platform" parent="." instance=ExtResource("2_eyevp")]
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_08io8")
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

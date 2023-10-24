@@ -2,6 +2,7 @@ extends Node3D
 
 @onready var ray_cast:RayCast3D = $"../Head/Camera3D/RayCast3D"
 @onready var pick_area:Node3D = $"../Head/PickArea"
+@export var pick_audio:AudioStreamPlayer3D 
 
 var picked_object:RigidBody3D = null
 
@@ -31,11 +32,11 @@ func _input(event):
 		return
 	
 	if ray_cast.is_colliding():
-		print("collidion")
+		
 		var collider = ray_cast.get_collider()
 		
 		if collider.is_in_group("pickable"):
-			print("pickable")
+			pick_audio.play()
 			picked_object = collider
 			picked_object.sleeping = true
 			handle_pickable()

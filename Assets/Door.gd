@@ -13,6 +13,10 @@ func _process(delta):
 
 func open():
 	$AnimationPlayer.play("open")
+	$Audio/Close.stop()
+	$Audio/Open.play(0)
 
 func close():
 	$AnimationPlayer.play_backwards("open")
+	$Audio/Open.stop()
+	$Audio/Close.play(0)

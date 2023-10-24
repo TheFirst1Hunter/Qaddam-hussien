@@ -1,6 +1,7 @@
 extends Node3D
 
 @onready var ray_casts:Array = $"../Legs/RayCasts".get_children() 
+@export var kick_audio:AudioStreamPlayer3D
 
 func _process(delta):
 	pass
@@ -21,6 +22,7 @@ func _input(event):
 			var pushDirection : Vector3 = -get_global_transform().basis.z
 #			pushDirection = pushDirection.normalized()        
 			if collider.is_in_group("kickable"):
+				kick_audio.play(0)
 				collider.apply_central_force(pushDirection * get_parent().kick_power)
 #				collider.apply_impulse(-collider.get_normal() * 0.1, collider.get_position())
 				

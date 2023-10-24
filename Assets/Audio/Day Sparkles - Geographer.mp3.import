@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cfie6xxk82d4a"
+path="res://.godot/imported/Day Sparkles - Geographer.mp3-f8aa782486ffb51f974ca25ed4d949c8.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/Day Sparkles - Geographer.mp3"
+dest_files=["res://.godot/imported/Day Sparkles - Geographer.mp3-f8aa782486ffb51f974ca25ed4d949c8.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

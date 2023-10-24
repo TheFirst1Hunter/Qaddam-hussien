@@ -3,16 +3,16 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dgruamuunk4aj"
-path.etc2="res://.godot/imported/Space.jpg-d2e26e66c59c955b6dbbc263f57076bc.etc2.ctex"
+path.s3tc="res://.godot/imported/Space.jpg-d2e26e66c59c955b6dbbc263f57076bc.s3tc.ctex"
 metadata={
-"imported_formats": ["etc2_astc"],
+"imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Assets/Textures/Space.jpg"
-dest_files=["res://.godot/imported/Space.jpg-d2e26e66c59c955b6dbbc263f57076bc.etc2.ctex"]
+dest_files=["res://.godot/imported/Space.jpg-d2e26e66c59c955b6dbbc263f57076bc.s3tc.ctex"]
 
 [params]
 

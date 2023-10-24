@@ -3,16 +3,16 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ctqslgbuj7pda"
-path.etc2="res://.godot/imported/WhitePlastic.jpg-42cc1841620c0c3a5cb6e06395d11b1b.etc2.ctex"
+path.s3tc="res://.godot/imported/WhitePlastic.jpg-42cc1841620c0c3a5cb6e06395d11b1b.s3tc.ctex"
 metadata={
-"imported_formats": ["etc2_astc"],
+"imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Assets/Textures/WhitePlastic.jpg"
-dest_files=["res://.godot/imported/WhitePlastic.jpg-42cc1841620c0c3a5cb6e06395d11b1b.etc2.ctex"]
+dest_files=["res://.godot/imported/WhitePlastic.jpg-42cc1841620c0c3a5cb6e06395d11b1b.s3tc.ctex"]
 
 [params]
 

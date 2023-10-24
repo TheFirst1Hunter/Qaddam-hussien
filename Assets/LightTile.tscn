@@ -4,22 +4,43 @@
 
 [sub_resource type="GDScript" id="GDScript_5okik"]
 script/source = "extends Node3D
-
+class_name LightTile
 
 # Called when the node enters the scene tree for the first time.
+var tween:Tween
+@onready var modifer = randi() 
+
 func _ready():
-	pass # Replace with function body.
+	pass
+#	tween = get_tree().create_tween()
+#	tween_light()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
-
+	$Cube013.material_override.next_pass.emission_energy_multiplier = abs(sin((Time.get_ticks_msec() + modifer)/600)) * 2
+	
+#\"\"
 func on():
 	$AnimationPlayer.play(\"On\")
 
 func off():
 	$AnimationPlayer.play_backwards(\"On\")
+
+func tween_light():
+	
+	var value =  abs(sin((randi()))) * 2
+	
+	tween.tween_property($Cube013.material_override,\"next_pass:emission_energy_multiplier\",20,2)
+	
+#	tween.finished.connect(tween_light())
+
+#func _on_timer_timeout():
+#
+#\"emission_energy_multiplier\"
+	
+	
+#	$Cube013.material_override.next_pass.emission_energy_multiplier =
 "
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_58wsu"]
@@ -200,6 +221,18 @@ tracks/3/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("OmniLight3D:omni_range")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 3.0]
+}
 
 [sub_resource type="Animation" id="Animation_7o5q6"]
 length = 0.001
@@ -250,6 +283,18 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("OmniLight3D:omni_range")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5p6a0"]

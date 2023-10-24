@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cntqfdf0mdge2"
+path="res://.godot/imported/Lights Hum.mp3-d5bbad7df4769936ea74372803ab2cdb.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/Lights Hum.mp3"
+dest_files=["res://.godot/imported/Lights Hum.mp3-d5bbad7df4769936ea74372803ab2cdb.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

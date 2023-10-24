@@ -16,13 +16,12 @@ func _process(delta):
 
 
 func _on_area_3d_body_entered(body):
-	print(body.name)
 	if body.is_in_group("pickable"):
-		print("pickableinnnn")
 		player.drop_pickable()
 		emit_signal("pickable_in")
 		var tween = get_tree().create_tween()
 		tween.tween_property(body,"global_transform",$Center.global_transform,0.5)
 		body.freeze = true
+		$AudioStreamPlayer3D.play()
 		emit_signal("kickable_in")
 

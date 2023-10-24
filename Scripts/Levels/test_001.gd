@@ -9,6 +9,17 @@ extends Node3D
 func _ready():
 	if !player:
 		printerr("please connect player to Test001")
+	
+
+func start():
+	for l in $Lights.get_children():
+		if l.has_method("on"):
+			l.on()
+		if l is OmniLight3D:
+			l.omni_range = 10
+			
+	
+	$Audio/AudioStreamPlayer3D.play()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -31,6 +42,7 @@ func _on_kickable_hole_kickable_in():
 
 func _on_pickable_hole_pickable_in():
 	$Doors/DoorIn.open()
+	start()
 
 
 func _on_player_open_door_body_entered(body):
@@ -45,4 +57,5 @@ func _on_player_open_door_body_exited(body):
 
 
 func _on_fall_area_body_entered(body):
-	reset_locations()
+	if body is Player or body.is_in_group("kickable"): 
+		reset_locations()

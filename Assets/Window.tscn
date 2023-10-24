@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://d2okmgw8gx28c"]
+[gd_scene load_steps=8 format=3 uid="uid://d2okmgw8gx28c"]
 
 [ext_resource type="Texture2D" uid="uid://dpt7xwph1k15e" path="res://Assets/Window (1)_abstract-metal-background-close-up.png" id="1_38ckp"]
 [ext_resource type="Script" path="res://Scripts/Window.gd" id="1_hb07l"]
+[ext_resource type="Material" uid="uid://d0uwk3shbhtfs" path="res://Assets/Materials/Window.tres" id="3_0gn40"]
 [ext_resource type="Texture2D" uid="uid://bwxwa7ty6mvtx" path="res://icon.svg" id="3_qola0"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n75np"]
@@ -44,53 +45,6 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_l1aqc")
 
-[sub_resource type="Shader" id="Shader_m8vu0"]
-code = "shader_type spatial;
-
-uniform sampler2D albedo : source_color;
-uniform float radius : hint_range(0.0, 1.0);
-
-float circleShape(vec2 position) {
-  // distance(p1, p2) - returns the distance between two points
-  // https://thebookofshaders.com/glossary/?search=distance
-  // always returns float
-  float value = distance(position, vec2(0.5));
-  // setp(edge, x) - compares two values
-  // https://thebookofshaders.com/glossary/?search=step
-  // edge - edge of step function
-  // x - value used to generate step
-  // x < edge
-  // only retruns either 0.0 or 1.0    
-  return step(radius, value);
-}
-
-void fragment() {
-   //float alpha = 1.0 - smoothstep(radius - (radius * 0.01), radius + (radius * 0.01), dot(UV, UV) );
-float circleWidth = 0.2;
-  float circle = circleShape(UV);
-	    ALBEDO = texture(albedo,UV).xyz;
-		if(circle != 0.0){
-			ALPHA = 0.0;
-		}
-	//ALPHA = alpha;
-    // If the alpha channel is below a certain threshold, make it transparent
-    //if (UV.x < 0.5) {
-		//ALBEDO = texture(albedo,UV).xyz;
- //   }else{
-	//	ALPHA = 0.0;
-	//}
-}
-"
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_a2l0f"]
-render_priority = 0
-shader = SubResource("Shader_m8vu0")
-shader_parameter/radius = 0.398
-shader_parameter/albedo = ExtResource("3_qola0")
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_s5f1b"]
-load_path = "res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.etc2.ctex"
-
 [node name="Window" type="Node3D"]
 script = ExtResource("1_hb07l")
 
@@ -112,8 +66,8 @@ render_target_update_mode = 4
 transform = Transform3D(-4.37114e-08, -3.48787e-16, -1, 3.48787e-16, 1, -3.48787e-16, 1, -3.48787e-16, -4.37114e-08, 0.29, 2.08165e-12, 2.08165e-12)
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform3D(0.428, -1.49281e-16, 1.49281e-16, 1.49281e-16, 0.428, -1.49281e-16, -1.49281e-16, 1.49281e-16, 0.428, 0, 0, 0.170439)
-material_override = SubResource("ShaderMaterial_a2l0f")
-texture = SubResource("CompressedTexture2D_s5f1b")
+transform = Transform3D(0.428, -1.49281e-16, 1.49281e-16, 1.49281e-16, 0.428, -1.49281e-16, -1.49281e-16, 1.49281e-16, 0.428, 0, 0, 0.173486)
+material_override = ExtResource("3_0gn40")
+texture = ExtResource("3_qola0")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
