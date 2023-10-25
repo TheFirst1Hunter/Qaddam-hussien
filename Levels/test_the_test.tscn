@@ -86,5 +86,4 @@ data = {
 metadata/_editor_floor_ = Vector3(0, 2, 0)
 
 [editable path="Test001"]
-[editable path="Test001/GND/Platforn/Kickable Moving Panel"]
 [editable path="Levels/Level002"]

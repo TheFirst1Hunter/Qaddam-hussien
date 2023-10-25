@@ -19,12 +19,13 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, 0.0468373, 0)]
+"values": [Vector3(2.08165e-12, -0.006, 2.08165e-12)]
 }
 
 [sub_resource type="Animation" id="Animation_d881x"]
 resource_name = "new_animation"
 length = 0.2
+step = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -32,10 +33,10 @@ tracks/0/path = NodePath("Ground Button/Cylinder002:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.2, 0.2001),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector3(0, 0.0468373, 0), Vector3(0, 0.00136237, 0)]
+"values": [Vector3(0, -0.0058909, 0), Vector3(0, -0.0276507, 0), Vector3(0, 0.00136237, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ykrd8"]
@@ -46,7 +47,7 @@ _data = {
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_8736w"]
 height = 0.02
-radius = 0.35
+radius = 0.3
 
 [node name="JokerGround" type="Node3D"]
 script = ExtResource("1_6vndl")
@@ -65,13 +66,13 @@ libraries = {
 [node name="Ground Button" parent="." instance=ExtResource("2_54vie")]
 
 [node name="Cylinder002" parent="Ground Button" index="1"]
-transform = Transform3D(0.16093, 0, 0, 0, 0.0292191, 0, 0, 0, 0.16093, 0, 0.0468373, 0)
+transform = Transform3D(0.16093, 0, 0, 0, 0.0292191, 0, 0, 0, 0.16093, 2.08165e-12, -0.006, 2.08165e-12)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Ground Button/Cylinder002" index="0"]
 transform = Transform3D(6.21388, 0, 0, 0, 34.2242, 0, 0, 0, 6.21388, 0, 5.26709, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ground Button/Cylinder002/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.120542, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.141406, 0)
 shape = SubResource("CylinderShape3D_8736w")
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

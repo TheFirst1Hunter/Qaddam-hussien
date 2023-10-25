@@ -27,7 +27,7 @@ func _process(delta):
 	pass
 
 func reset_locations():
-	player.global_transsform = $Areas/PlayerLocation.global_transform
+	player.globwal_transsform = $Areas/PlayerLocation.global_transform
 	$Objects/Kickable.sleeping = true
 	$Objects/Pickable.global_transform = pickable_location
 	$Objects/Kickable.global_transform = kickable_location
@@ -42,13 +42,13 @@ func _on_kickable_hole_kickable_in():
 
 func _on_pickable_hole_pickable_in():
 	$Doors/DoorIn.open()
-	start()
 
 
 func _on_player_open_door_body_entered(body):
 	if body is Player:
 		doorOut.open()
-		body.kick_power = 700
+		body.kick_power = 900
+		start()
 
 
 func _on_player_open_door_body_exited(body):
