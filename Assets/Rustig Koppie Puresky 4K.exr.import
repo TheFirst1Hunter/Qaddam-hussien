@@ -3,16 +3,16 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://1ptko1nudang"
-path.astc="res://.godot/imported/Rustig Koppie Puresky 4K.exr-271913693589c882b0fa53b7741570dd.astc.ctex"
+path.bptc="res://.godot/imported/Rustig Koppie Puresky 4K.exr-271913693589c882b0fa53b7741570dd.bptc.ctex"
 metadata={
-"imported_formats": ["etc2_astc"],
+"imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Assets/Rustig Koppie Puresky 4K.exr"
-dest_files=["res://.godot/imported/Rustig Koppie Puresky 4K.exr-271913693589c882b0fa53b7741570dd.astc.ctex"]
+dest_files=["res://.godot/imported/Rustig Koppie Puresky 4K.exr-271913693589c882b0fa53b7741570dd.bptc.ctex"]
 
 [params]
 

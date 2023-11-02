@@ -5,7 +5,7 @@ class_name Player
 @export var mouse_sensitivity:float = 0.005
 @export var SPEED = 5.0
 @export var JUMP_VELOCITY = 4.5
-@export var kick_power:int = 900
+@export var kick_power:int = 1100
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")

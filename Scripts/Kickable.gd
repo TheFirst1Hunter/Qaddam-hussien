@@ -16,6 +16,9 @@ func _input(event):
 		return
 		
 	
+
+
+func kick():
 	for ray_cast in ray_casts:
 		if ray_cast.is_colliding():
 			var collider = ray_cast.get_collider()

@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://jw3qm2nc36pk"]
+[gd_scene load_steps=17 format=3 uid="uid://jw3qm2nc36pk"]
 
 [ext_resource type="Texture2D" uid="uid://daap5tv3ptqkt" path="res://Assets/HDR/kloppenheim_02_puresky_8k.hdr" id="1_65r2y"]
 [ext_resource type="PackedScene" uid="uid://db6dkllte6bf5" path="res://Levels/test_001.tscn" id="1_e2h0k"]
+[ext_resource type="Script" path="res://Scripts/Levels/level1.gd" id="1_fbsi1"]
 [ext_resource type="PackedScene" uid="uid://cyemi5ptucujf" path="res://Entites/player.tscn" id="2_6suyb"]
 [ext_resource type="PackedScene" uid="uid://cw2v3gaduyfxd" path="res://Levels/level_001.tscn" id="3_bbngx"]
 [ext_resource type="PackedScene" uid="uid://c0xt0igq4juul" path="res://Levels/level_002.tscn" id="4_0l3vb"]
@@ -9,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://br0wapg0qs7qg" path="res://Levels/level_004.tscn" id="6_xl3rd"]
 [ext_resource type="PackedScene" uid="uid://bik6wqe8d6blm" path="res://Levels/level_005.tscn" id="7_y4kaj"]
 [ext_resource type="MeshLibrary" uid="uid://b2lpf7x02brbv" path="res://Utils/Grids.tres" id="9_4h583"]
+[ext_resource type="PackedScene" uid="uid://d1qtdsydcun5s" path="res://Assets/LightTile.tscn" id="10_bv057"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_ko0ic"]
 panorama = ExtResource("1_65r2y")
@@ -23,7 +25,15 @@ sky = SubResource("Sky_fl4ef")
 tonemap_mode = 2
 glow_enabled = true
 
-[node name="testTheTest" type="Node3D"]
+[sub_resource type="PlaneMesh" id="PlaneMesh_o3dfc"]
+flip_faces = true
+size = Vector2(34.668, 50)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_t6k6h"]
+size = Vector3(3.641, 1.128, 3.094)
+
+[node name="Level1" type="Node3D"]
+script = ExtResource("1_fbsi1")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_hk3x8")
@@ -32,12 +42,14 @@ environment = SubResource("Environment_hk3x8")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.9815, 0, 22.8889)
 player = NodePath("../Player")
 
+[node name="Kickable Moving Panel" parent="Test001/GND/Platforn" index="0"]
+transform = Transform3D(-3.59972e-06, 3.84884e-07, 1, 0.117833, 0.993034, 4.19615e-08, -0.993034, 0.117833, -3.61999e-06, -0.0390372, 0.0422046, -0.100262)
+
 [node name="pickableHole" parent="Test001/Objects" index="2" node_paths=PackedStringArray("player")]
 player = NodePath("../../../Player")
 
 [node name="Player" parent="." instance=ExtResource("2_6suyb")]
 transform = Transform3D(-0.276627, 0, 0.960977, 0, 1, 0, -0.960977, 0, -0.276627, 30.1816, 1.25728, 20.2317)
-kick_power = 1100
 
 [node name="Levels" type="Node3D" parent="."]
 transform = Transform3D(0.0696171, 0, -0.997574, 0, 1, 0, 0.997574, 0, 0.0696171, 32.6075, 0, 19.42)
@@ -65,6 +77,10 @@ player = NodePath("../../Player")
 [node name="Meshes" type="Node3D" parent="."]
 transform = Transform3D(0.0393994, 0, -0.999224, 0, 1, 0, 0.999224, 0, 0.0393994, 34.4882, 0, 17.4525)
 
+[node name="Roof" type="MeshInstance3D" parent="Meshes"]
+transform = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, 0, 0.999999, 10.203, 3, 18.561)
+mesh = SubResource("PlaneMesh_o3dfc")
+
 [node name="Grid" type="Node3D" parent="."]
 
 [node name="1" type="GridMap" parent="Grid"]
@@ -84,6 +100,54 @@ data = {
 "cells": PackedInt32Array(131097, 20, 851969, 131097, 21, 851969, 131095, 21, 851969, 131095, 20, 851969, 131095, 19, 851969, 131095, 18, 851969, 65561, 20, 851969, 65561, 21, 851969, 65559, 21, 851969, 65559, 20, 851969, 65559, 19, 851969, 65559, 18, 851969, 23, 21, 851969, 23, 20, 851969, 23, 18, 851969, 23, 19, 851969, 25, 21, 851969, 25, 20, 851969, 65534, 25, 1310721, 65534, 26, 1310721, 65532, 26, 1310721, 65532, 25, 1310721, 131068, 25, 1310721, 131068, 26, 1310721, 131070, 25, 1310721, 131070, 26, 1310721, 196604, 26, 1310721, 196604, 25, 1310721, 196606, 25, 1310721, 196606, 26, 1310721)
 }
 metadata/_editor_floor_ = Vector3(0, 2, 0)
+
+[node name="Fixture" type="Node3D" parent="."]
+
+[node name="1-2" type="Node3D" parent="Fixture"]
+
+[node name="LightTile" parent="Fixture/1-2" instance=ExtResource("10_bv057")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.6652, 2.9863, 20.6856)
+
+[node name="LightTile2" parent="Fixture/1-2" instance=ExtResource("10_bv057")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.6652, 2.9863, 19.297)
+
+[node name="LightTile3" parent="Fixture/1-2" instance=ExtResource("10_bv057")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.6652, 2.9863, 18.3517)
+
+[node name="LightTile4" parent="Fixture/1-2" instance=ExtResource("10_bv057")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 25.0978, 2.9036, 18.3517)
+
+[node name="LightTile6" parent="Fixture/1-2" instance=ExtResource("10_bv057")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 24.4875, 2.9036, 18.3517)
+
+[node name="LightTile5" parent="Fixture/1-2" instance=ExtResource("10_bv057")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 26.427, 2.9036, 18.3517)
+
+[node name="Node3D" type="Node3D" parent="Fixture"]
+
+[node name="Area" type="Node3D" parent="."]
+
+[node name="Area3D" type="Area3D" parent="Area"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.7989, 1.33324, 19.9524)
+shape = SubResource("BoxShape3D_t6k6h")
+
+[node name="Lights" type="Node3D" parent="."]
+
+[node name="1-2" type="Node3D" parent="Lights"]
+visible = false
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Lights/1-2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.4809, 2.45107, 18.4269)
+light_energy = 0.0
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="Lights/1-2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.1249, 2.45107, 19.9543)
+light_energy = 0.0
+
+[connection signal="body_entered" from="Area/Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area/Area3D" to="." method="_on_area_3d_body_exited"]
 
 [editable path="Test001"]
 [editable path="Levels/Level002"]
