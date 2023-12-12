@@ -40,7 +40,7 @@ func _input(event):
 			picked_object = collider
 			picked_object.sleeping = true
 			handle_pickable()
-			
+			collider._picked()
 			return
 
 func handle_pickable() -> void:

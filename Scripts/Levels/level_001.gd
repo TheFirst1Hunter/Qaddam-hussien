@@ -1,6 +1,8 @@
 extends Node3D
 
 @onready var exit_door:Door = $"Objects/Door"
+var startOfTheGameIndex = 0
+var intinterruptionCount = 0
 
 func light_on():
 	$Lights.visible = true
@@ -35,11 +37,33 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	if Input.is_action_pressed("ui_up") || Input.is_action_pressed("ui_down") || Input.is_action_pressed("ui_right") || Input.is_action_pressed("ui_left"):
+		if $Audio/StartOfTheGame.playing:
+			if not $Audio/PlayerMovesBeforeTutorialEnds1.playing and not $Audio/PlayerMovesBeforeTutorialEnds2.playing:
+				startOfTheGameIndex = $Audio/StartOfTheGame.get_playback_position()
+				if intinterruptionCount < 2:
+					$Audio/StartOfTheGame.stop()
+					
+				if intinterruptionCount == 1:
+					$Audio/PlayerMovesBeforeTutorialEnds2.play()
+					intinterruptionCount += 1
+					
+				if intinterruptionCount == 0:
+					$Audio/PlayerMovesBeforeTutorialEnds1.play()
+					intinterruptionCount += 1
+				
 
 
 func _on_button_button_pressed():
-	exit_door.open()
+	if not $Audio/StartOfTheGame.playing and not $Audio/PlayerMovesBeforeTutorialEnds1.playing and not $Audio/PlayerMovesBeforeTutorialEnds2.playing:
+		exit_door.open()
+		$Audio/WhenDoorOpens.play()
+	else:
+		startOfTheGameIndex = $Audio/StartOfTheGame.get_playback_position()
+		$Audio/PlayerMovesBeforeTutorialEnds1.stop()
+		$Audio/PlayerMovesBeforeTutorialEnds2.stop()
+		$Audio/StartOfTheGame.stop()
+		$Audio/PLayerPressesTheButtonBeforeTutorialEnds.play()
 
 
 func _on_room_body_exited(body):
@@ -59,3 +83,18 @@ func _on_room_body_entered(body):
 #	for l in $Fixture.get_children():
 #		l.on()
 #	$Lights.visible = true
+
+
+func _on_player_moves_before_tutorial_ends_finished():
+	await get_tree().create_timer(1).timeout
+	$Audio/StartOfTheGame.play(startOfTheGameIndex)
+
+
+func _on_p_layer_presses_the_button_before_tutorial_ends_finished():
+	await get_tree().create_timer(1).timeout
+	$Audio/StartOfTheGame.play(startOfTheGameIndex)
+
+
+func _on_player_moves_before_tutorial_ends_2_finished():
+	await get_tree().create_timer(1).timeout
+	$Audio/StartOfTheGame.play(startOfTheGameIndex)

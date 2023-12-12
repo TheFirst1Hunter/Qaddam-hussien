@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://kbvc4d8flcgf"
+path="res://.godot/imported/if the player throw themselves.mp3-ea9dd9ddfb70a17b85ad6bc56b835ce7.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/Dialogue/if the player throw themselves.mp3"
+dest_files=["res://.godot/imported/if the player throw themselves.mp3-ea9dd9ddfb70a17b85ad6bc56b835ce7.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

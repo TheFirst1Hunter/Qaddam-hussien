@@ -2,6 +2,10 @@ extends Node3D
 
 @onready var door:Door = $"Objects/Door"
 @onready var doorIn:Door = $"Objects/DoorIn"
+@export var cencesored:bool = true
+
+var streamAudioWhenPlayerPicks
+var streamAudioWhenPlayerPutsPickable
 
 func light_on():
 	$Lights.visible = true
@@ -27,9 +31,17 @@ func light_off():
 			l.light_energy= variable_to_decrease
 	
 	$Lights.visible = false
-
+	
 func _ready():
-	pass
+	if cencesored:
+		streamAudioWhenPlayerPicks = load("res://Assets/Audio/Dialogue/When a player picks a pickable item [censored].mp3")
+		streamAudioWhenPlayerPutsPickable = load("res://Assets/Audio/Dialogue/When a player places a pickable item in its place [censored].mp3")
+	if not cencesored:
+		streamAudioWhenPlayerPicks = load("res://Assets/Audio/Dialogue/When a player picks a pickable item.mp3")
+		streamAudioWhenPlayerPutsPickable = load("res://Assets/Audio/Dialogue/When a player places a pickable item in its place.mp3")
+	
+	$Audio/WhenThePlayerPicksTheItem.stream = streamAudioWhenPlayerPicks
+	$Audio/WhenThePlayerPlacesThePickable.stream = streamAudioWhenPlayerPutsPickable
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -38,6 +50,8 @@ func _process(delta):
 
 
 func _on_pickable_hole_pickable_in():
+	$Audio/WhenThePlayerPicksTheItem.stop()
+	$Audio/WhenThePlayerPlacesThePickable.play()
 	door.open()
 
 
@@ -60,3 +74,7 @@ func _on_player_in_room_body_entered(body):
 func _on_player_in_room_body_exited(body):
 	if body is Player:
 		light_off()
+
+
+func _on_pickable_picked():
+	$Audio/WhenThePlayerPicksTheItem.play()

@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://sbwjcysciyu3"]
+[gd_scene load_steps=7 format=3 uid="uid://sbwjcysciyu3"]
 
+[ext_resource type="Script" path="res://Scripts/Pickable.gd" id="1_doivv"]
 [ext_resource type="Texture2D" uid="uid://rej1y7a7ag7t" path="res://Assets/Textures/PickableTexture.png" id="1_sq5qs"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y7iur"]
@@ -40,6 +41,7 @@ shadow_mesh = SubResource("ArrayMesh_gtixl")
 size = Vector3(0.4, 0.4, 0.4)
 
 [node name="Pickable" type="RigidBody3D" groups=["pickable"]]
+script = ExtResource("1_doivv")
 
 [node name="Cube005" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 0, 0)

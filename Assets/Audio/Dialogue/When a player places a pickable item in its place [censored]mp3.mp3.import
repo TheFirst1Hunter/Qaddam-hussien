@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://ce2i63j3yyytv"
+path="res://.godot/imported/When a player places a pickable item in its place [censored]mp3.mp3-800b2438d008f1f1d219ee16579493f1.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/Dialogue/When a player places a pickable item in its place [censored]mp3.mp3"
+dest_files=["res://.godot/imported/When a player places a pickable item in its place [censored]mp3.mp3-800b2438d008f1f1d219ee16579493f1.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

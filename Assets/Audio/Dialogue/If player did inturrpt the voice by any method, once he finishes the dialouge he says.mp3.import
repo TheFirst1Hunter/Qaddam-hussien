@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://d4drx0de6csns"
+path="res://.godot/imported/If player did inturrpt the voice by any method, once he finishes the dialouge he says.mp3-a4edd3b718e96fe0376b4290b0413e4b.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/Dialogue/If player did inturrpt the voice by any method, once he finishes the dialouge he says.mp3"
+dest_files=["res://.godot/imported/If player did inturrpt the voice by any method, once he finishes the dialouge he says.mp3-a4edd3b718e96fe0376b4290b0413e4b.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

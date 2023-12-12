@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dt7wk0622hmnm"
+path="res://.godot/imported/When a player picks a pickable item.mp3-7a84248366275d3b63c894500ff699a3.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/Dialogue/When a player picks a pickable item.mp3"
+dest_files=["res://.godot/imported/When a player picks a pickable item.mp3-7a84248366275d3b63c894500ff699a3.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

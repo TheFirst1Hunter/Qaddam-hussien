@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b8gguui0xjguf"
+path="res://.godot/imported/When a player presses a button.mp3-3da97f169e10215c4594f0c8216343ab.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/Dialogue/When a player presses a button.mp3"
+dest_files=["res://.godot/imported/When a player presses a button.mp3-3da97f169e10215c4594f0c8216343ab.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

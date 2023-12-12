@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bja2trvnukmh"
+path="res://.godot/imported/Player interuppets the voice by pressing the button 1.mp3-b732c70a998e113a55db19d1f6d68990.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/Dialogue/Player interuppets the voice by pressing the button 1.mp3"
+dest_files=["res://.godot/imported/Player interuppets the voice by pressing the button 1.mp3-b732c70a998e113a55db19d1f6d68990.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://ceea2v00xyw5l"
+path="res://.godot/imported/Player moves before the instruction ends.mp3-421c02e053ae99950f46e30c5b68a7a7.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/Dialogue/Player moves before the instruction ends.mp3"
+dest_files=["res://.godot/imported/Player moves before the instruction ends.mp3-421c02e053ae99950f46e30c5b68a7a7.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

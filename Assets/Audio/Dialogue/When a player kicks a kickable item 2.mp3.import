@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cfcg52p71325r"
+path="res://.godot/imported/When a player kicks a kickable item 2.mp3-1723ae30e0c581e5fc51d6f8c1464e8a.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/Dialogue/When a player kicks a kickable item 2.mp3"
+dest_files=["res://.godot/imported/When a player kicks a kickable item 2.mp3-1723ae30e0c581e5fc51d6f8c1464e8a.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

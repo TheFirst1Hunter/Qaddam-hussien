@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://swlr1cs4m4sh"
+path="res://.godot/imported/the ball runs to the wall.mp3-bf291948f5f4fe8500fcf66e3b4c943d.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/Dialogue/the ball runs to the wall.mp3"
+dest_files=["res://.godot/imported/the ball runs to the wall.mp3-bf291948f5f4fe8500fcf66e3b4c943d.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

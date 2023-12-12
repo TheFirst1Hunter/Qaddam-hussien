@@ -291,6 +291,8 @@ skeleton = NodePath("")
 [node name="Open" type="AudioStreamPlayer3D" parent="Audio"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.543784, 0)
 stream = ExtResource("2_008bs")
+volume_db = 10.0
 
 [node name="Close" type="AudioStreamPlayer3D" parent="Audio"]
 stream = ExtResource("5_1g3so")
+volume_db = 10.0

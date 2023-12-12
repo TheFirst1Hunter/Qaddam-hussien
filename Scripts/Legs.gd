@@ -33,8 +33,11 @@ func check_if_kickable_in_range():
 			return collider.is_in_group("kickable")
 
 func handle_pulling():
+	if not kickable:
+		return
+		
+		
 	var kick_tween:Tween = get_tree().create_tween()
-#		()
 	var kickable_origin = kickable.global_transform.origin
 	kickable_origin.y+=1
 	kick_tween.tween_property(right_leg,"global_transform:origin",kickable_origin,0.1)
@@ -72,7 +75,7 @@ func _on_area_3d_body_exited(body):
 
 func tween_leg_back():
 	var leg_back_tween = get_tree().create_tween()
-	leg_back_tween.tween_property(right_leg,"global_transform:origin",Vector3(0,0,0),0.05)
+	leg_back_tween.tween_property(right_leg,"transform:origin",Vector3(0,0,0),0.05)
 	leg_back_tween.tween_property(right_leg,"rotation_degrees:x",0,0.05)
 
 func tween_kick_leg_back():

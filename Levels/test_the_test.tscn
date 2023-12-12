@@ -1,6 +1,5 @@
-[gd_scene load_steps=17 format=3 uid="uid://jw3qm2nc36pk"]
+[gd_scene load_steps=16 format=3 uid="uid://jw3qm2nc36pk"]
 
-[ext_resource type="Texture2D" uid="uid://daap5tv3ptqkt" path="res://Assets/HDR/kloppenheim_02_puresky_8k.hdr" id="1_65r2y"]
 [ext_resource type="PackedScene" uid="uid://db6dkllte6bf5" path="res://Levels/test_001.tscn" id="1_e2h0k"]
 [ext_resource type="Script" path="res://Scripts/Levels/level1.gd" id="1_fbsi1"]
 [ext_resource type="PackedScene" uid="uid://cyemi5ptucujf" path="res://Entites/player.tscn" id="2_6suyb"]
@@ -11,19 +10,15 @@
 [ext_resource type="PackedScene" uid="uid://bik6wqe8d6blm" path="res://Levels/level_005.tscn" id="7_y4kaj"]
 [ext_resource type="MeshLibrary" uid="uid://b2lpf7x02brbv" path="res://Utils/Grids.tres" id="9_4h583"]
 [ext_resource type="PackedScene" uid="uid://d1qtdsydcun5s" path="res://Assets/LightTile.tscn" id="10_bv057"]
+[ext_resource type="AudioStream" uid="uid://dhvc0vljh8sn4" path="res://Assets/Audio/waiting-music.mp3" id="12_6mtjl"]
 
-[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_ko0ic"]
-panorama = ExtResource("1_65r2y")
+[sub_resource type="Sky" id="Sky_mbx15"]
 
-[sub_resource type="Sky" id="Sky_fl4ef"]
-sky_material = SubResource("PanoramaSkyMaterial_ko0ic")
-
-[sub_resource type="Environment" id="Environment_hk3x8"]
-background_mode = 2
-background_energy_multiplier = 0.2
-sky = SubResource("Sky_fl4ef")
-tonemap_mode = 2
-glow_enabled = true
+[sub_resource type="Environment" id="Environment_ussqq"]
+background_mode = 1
+background_color = Color(0.184314, 0.176471, 0.2, 1)
+sky = SubResource("Sky_mbx15")
+ssao_enabled = true
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_o3dfc"]
 flip_faces = true
@@ -36,14 +31,11 @@ size = Vector3(3.641, 1.128, 3.094)
 script = ExtResource("1_fbsi1")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_hk3x8")
+environment = SubResource("Environment_ussqq")
 
 [node name="Test001" parent="." node_paths=PackedStringArray("player") instance=ExtResource("1_e2h0k")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.9815, 0, 22.8889)
 player = NodePath("../Player")
-
-[node name="Kickable Moving Panel" parent="Test001/GND/Platforn" index="0"]
-transform = Transform3D(-3.59972e-06, 3.84884e-07, 1, 0.117833, 0.993034, 4.19615e-08, -0.993034, 0.117833, -3.61999e-06, -0.0390372, 0.0422046, -0.100262)
 
 [node name="pickableHole" parent="Test001/Objects" index="2" node_paths=PackedStringArray("player")]
 player = NodePath("../../../Player")
@@ -78,7 +70,7 @@ player = NodePath("../../Player")
 transform = Transform3D(0.0393994, 0, -0.999224, 0, 1, 0, 0.999224, 0, 0.0393994, 34.4882, 0, 17.4525)
 
 [node name="Roof" type="MeshInstance3D" parent="Meshes"]
-transform = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, 0, 0.999999, 10.203, 3, 18.561)
+transform = Transform3D(0.999999, 0, -4.79957e-10, 0, 1, 0, 8.88265e-10, 0, 0.999999, 10.203, 3, 18.561)
 mesh = SubResource("PlaneMesh_o3dfc")
 
 [node name="Grid" type="Node3D" parent="."]
@@ -145,6 +137,14 @@ light_energy = 0.0
 [node name="OmniLight3D2" type="OmniLight3D" parent="Lights/1-2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.1249, 2.45107, 19.9543)
 light_energy = 0.0
+
+[node name="Audio" type="Node3D" parent="."]
+
+[node name="BGM" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("12_6mtjl")
+volume_db = -10.0
+autoplay = true
+mix_target = 2
 
 [connection signal="body_entered" from="Area/Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="Area/Area3D" to="." method="_on_area_3d_body_exited"]
