@@ -27,6 +27,7 @@ func kick():
 			if collider.is_in_group("kickable"):
 				kick_audio.play(0)
 				collider.apply_central_force(pushDirection * get_parent().kick_power)
+				collider._kicked()
 #				collider.apply_impulse(-collider.get_normal() * 0.1, collider.get_position())
 				
 				return

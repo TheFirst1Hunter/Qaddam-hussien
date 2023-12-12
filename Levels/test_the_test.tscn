@@ -41,7 +41,7 @@ player = NodePath("../Player")
 player = NodePath("../../../Player")
 
 [node name="Player" parent="." instance=ExtResource("2_6suyb")]
-transform = Transform3D(-0.276627, 0, 0.960977, 0, 1, 0, -0.960977, 0, -0.276627, 30.1816, 1.25728, 20.2317)
+transform = Transform3D(-0.276627, 0, 0.960977, 0, 1, 0, -0.960977, 0, -0.276627, 31.0641, 1.25728, 17.9112)
 
 [node name="Levels" type="Node3D" parent="."]
 transform = Transform3D(0.0696171, 0, -0.997574, 0, 1, 0, 0.997574, 0, 0.0696171, 32.6075, 0, 19.42)

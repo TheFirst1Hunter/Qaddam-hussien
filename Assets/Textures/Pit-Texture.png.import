@@ -3,16 +3,16 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dfe6obkoy5eh3"
-path.etc2="res://.godot/imported/Pit-Texture.png-ac918953d4771f5292d5b9c8f474e6c9.etc2.ctex"
+path.s3tc="res://.godot/imported/Pit-Texture.png-ac918953d4771f5292d5b9c8f474e6c9.s3tc.ctex"
 metadata={
-"imported_formats": ["etc2_astc"],
+"imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Assets/Textures/Pit-Texture.png"
-dest_files=["res://.godot/imported/Pit-Texture.png-ac918953d4771f5292d5b9c8f474e6c9.etc2.ctex"]
+dest_files=["res://.godot/imported/Pit-Texture.png-ac918953d4771f5292d5b9c8f474e6c9.s3tc.ctex"]
 
 [params]
 

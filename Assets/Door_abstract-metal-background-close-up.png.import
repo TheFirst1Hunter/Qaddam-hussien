@@ -3,9 +3,9 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bv5x4dw41b0th"
-path.etc2="res://.godot/imported/Door_abstract-metal-background-close-up.png-6833372e2a3406d968731d164b9b3ac9.etc2.ctex"
+path.s3tc="res://.godot/imported/Door_abstract-metal-background-close-up.png-6833372e2a3406d968731d164b9b3ac9.s3tc.ctex"
 metadata={
-"imported_formats": ["etc2_astc"],
+"imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={}
@@ -13,7 +13,7 @@ generator_parameters={}
 [deps]
 
 source_file="res://Assets/Door_abstract-metal-background-close-up.png"
-dest_files=["res://.godot/imported/Door_abstract-metal-background-close-up.png-6833372e2a3406d968731d164b9b3ac9.etc2.ctex"]
+dest_files=["res://.godot/imported/Door_abstract-metal-background-close-up.png-6833372e2a3406d968731d164b9b3ac9.s3tc.ctex"]
 
 [params]
 

@@ -3,9 +3,9 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dtjmit2pwj5"
-path.etc2="res://.godot/imported/Jordan_JordanFakeLogo.png-778ff61370cd4abd78f94a9f1e3736c1.etc2.ctex"
+path.s3tc="res://.godot/imported/Jordan_JordanFakeLogo.png-778ff61370cd4abd78f94a9f1e3736c1.s3tc.ctex"
 metadata={
-"imported_formats": ["etc2_astc"],
+"imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={}
@@ -13,7 +13,7 @@ generator_parameters={}
 [deps]
 
 source_file="res://Assets/Jordan_JordanFakeLogo.png"
-dest_files=["res://.godot/imported/Jordan_JordanFakeLogo.png-778ff61370cd4abd78f94a9f1e3736c1.etc2.ctex"]
+dest_files=["res://.godot/imported/Jordan_JordanFakeLogo.png-778ff61370cd4abd78f94a9f1e3736c1.s3tc.ctex"]
 
 [params]
 

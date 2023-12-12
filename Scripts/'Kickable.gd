@@ -1,5 +1,7 @@
 extends RigidBody3D
 
+signal kciked
+
 var maxLinearVelocity = 2.0  # Set your desired maximum velocity here
 var maxAngularVelocity = 2.0  # Set your desired maximum velocity here
 
@@ -20,3 +22,6 @@ func _physics_process(delta):
 		# If it exceeds the maximum, normalize the angular velocity and scale it back to the maximum
 		currentAngularVelocity = currentAngularVelocity.normalized() * maxAngularVelocity
 		angular_velocity = currentAngularVelocity
+
+func _kicked():
+	emit_signal("kciked")

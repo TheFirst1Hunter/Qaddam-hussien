@@ -1,8 +1,10 @@
 extends Node3D
 
 @onready var exit_door:Door = $"Objects/Door"
-var startOfTheGameIndex = 0
-var intinterruptionCount = 0
+var start_of_the_game_index = 0
+var intinterruption_count = 0
+var is_player_in_room = true
+var player_in_button_area_once = true
 
 func light_on():
 	$Lights.visible = true
@@ -37,29 +39,33 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if not $Lights.visible or not is_player_in_room:
+		return
+		
 	if Input.is_action_pressed("ui_up") || Input.is_action_pressed("ui_down") || Input.is_action_pressed("ui_right") || Input.is_action_pressed("ui_left"):
 		if $Audio/StartOfTheGame.playing:
 			if not $Audio/PlayerMovesBeforeTutorialEnds1.playing and not $Audio/PlayerMovesBeforeTutorialEnds2.playing:
-				startOfTheGameIndex = $Audio/StartOfTheGame.get_playback_position()
-				if intinterruptionCount < 2:
+				start_of_the_game_index = max(0,$Audio/StartOfTheGame.get_playback_position() - 1)
+				if intinterruption_count < 2:
 					$Audio/StartOfTheGame.stop()
 					
-				if intinterruptionCount == 1:
+				if intinterruption_count == 1:
 					$Audio/PlayerMovesBeforeTutorialEnds2.play()
-					intinterruptionCount += 1
 					
-				if intinterruptionCount == 0:
+				if intinterruption_count == 0:
 					$Audio/PlayerMovesBeforeTutorialEnds1.play()
-					intinterruptionCount += 1
+				
+				intinterruption_count += 1
 				
 
 
 func _on_button_button_pressed():
 	if not $Audio/StartOfTheGame.playing and not $Audio/PlayerMovesBeforeTutorialEnds1.playing and not $Audio/PlayerMovesBeforeTutorialEnds2.playing:
 		exit_door.open()
+		is_player_in_room = false
 		$Audio/WhenDoorOpens.play()
 	else:
-		startOfTheGameIndex = $Audio/StartOfTheGame.get_playback_position()
+		start_of_the_game_index = max(0,$Audio/StartOfTheGame.get_playback_position() - 1)
 		$Audio/PlayerMovesBeforeTutorialEnds1.stop()
 		$Audio/PlayerMovesBeforeTutorialEnds2.stop()
 		$Audio/StartOfTheGame.stop()
@@ -87,14 +93,33 @@ func _on_room_body_entered(body):
 
 func _on_player_moves_before_tutorial_ends_finished():
 	await get_tree().create_timer(1).timeout
-	$Audio/StartOfTheGame.play(startOfTheGameIndex)
+	$Audio/StartOfTheGame.play(start_of_the_game_index)
 
 
 func _on_p_layer_presses_the_button_before_tutorial_ends_finished():
 	await get_tree().create_timer(1).timeout
-	$Audio/StartOfTheGame.play(startOfTheGameIndex)
+	$Audio/StartOfTheGame.play(start_of_the_game_index)
 
 
 func _on_player_moves_before_tutorial_ends_2_finished():
 	await get_tree().create_timer(1).timeout
-	$Audio/StartOfTheGame.play(startOfTheGameIndex)
+	$Audio/StartOfTheGame.play(start_of_the_game_index)
+
+
+func _on_when_door_opens_finished():
+	pass
+#	await get_tree().create_timer(1).timeout
+#	$Audio/StartOfTheGame.play(start_of_the_game_index)
+
+
+func _on_button_area_body_entered(body):
+	if not body is Player:
+		return
+		
+	if player_in_button_area_once:
+		start_of_the_game_index = max(0,$Audio/StartOfTheGame.get_playback_position() - 1)
+		$Audio/PlayerMovesBeforeTutorialEnds1.stop()
+		$Audio/PlayerMovesBeforeTutorialEnds2.stop()
+		$Audio/StartOfTheGame.stop()
+		$Audio/WhenDoorOpens.play()
+		player_in_button_area_once = false

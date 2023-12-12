@@ -3,16 +3,16 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://jn538coh1ppu"
-path.etc2="res://.godot/imported/Pickable Platform Texture.png-49bdc5e6008fd0b6c652568cdcea49d1.etc2.ctex"
+path.s3tc="res://.godot/imported/Pickable Platform Texture.png-49bdc5e6008fd0b6c652568cdcea49d1.s3tc.ctex"
 metadata={
-"imported_formats": ["etc2_astc"],
+"imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Assets/Textures/Pickable Platform Texture.png"
-dest_files=["res://.godot/imported/Pickable Platform Texture.png-49bdc5e6008fd0b6c652568cdcea49d1.etc2.ctex"]
+dest_files=["res://.godot/imported/Pickable Platform Texture.png-49bdc5e6008fd0b6c652568cdcea49d1.s3tc.ctex"]
 
 [params]
 
